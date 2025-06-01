@@ -127,12 +127,6 @@
                 </p>
             </div>
 
-            <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-500 hover:scale-105 transform animate-zoom-in delay-600">
-                <h3 class="text-4xl font-extrabold mb-3 text-green-600">100+</h3>
-                <p class="text-gray-700 leading-relaxed">
-                    Country Member
-                </p>
-            </div>
         </div>
     </section>
 
