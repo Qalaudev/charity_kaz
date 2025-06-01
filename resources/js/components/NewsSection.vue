@@ -7,6 +7,7 @@
                     <!-- Add News Button -->
                     <button
                         @click="openModal"
+                        v-show="showModalButton"
                         class="bg-green-500 hover:bg-green-600 transition duration-300 text-white font-semibold rounded-xl px-5 py-2 flex items-center gap-2 shadow-md hover:scale-105 transform"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 animate-pulse" fill="none" viewBox="0 0 24 24"
@@ -203,6 +204,7 @@ export default {
     name: 'NewsSection',
     data() {
         return {
+            showModalButton:false,
             news: [],
             showModal: false,
             loading: false,
