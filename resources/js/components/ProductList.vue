@@ -31,7 +31,7 @@
                     <div class="carousel-item active absolute top-0 left-0 w-full h-full transition-all duration-700 ease-in-out">
                         <div class="w-full h-full p-4 sm:p-8">
                             <div class="w-full h-full rounded-3xl overflow-hidden relative group shadow-2xl">
-                                <img src="/storage/app/public/navbarImage/navbarPhoto1.jpg" alt="Geometric art installation" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                <img src="/storage/app/public/navbarImage/photo1.jpg" alt="Geometric art installation" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                                 <div class="absolute  from-green-200/30 to-white/20 mix-blend-overlay backdrop-blur-sm"></div>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                     <div class="carousel-item next absolute top-0 left-0 w-full h-full transition-all duration-700 ease-in-out">
                         <div class="w-full h-full p-4 sm:p-8">
                             <div class="w-full h-full rounded-3xl overflow-hidden relative group shadow-2xl">
-                                <img src="/storage/app/public/navbarImage/navbarPhoto2.jpg" alt="Futuristic tech setup" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                <img src="/storage/app/public/navbarImage/photo2.jpg" alt="Futuristic tech setup" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                                 <div class="absolute from-emerald-300/30 to-white/30 mix-blend-overlay backdrop-blur-sm"></div>
                             </div>
                         </div>
@@ -49,11 +49,32 @@
                     <div class="carousel-item hidden absolute top-0 left-0 w-full h-full transition-all duration-700 ease-in-out">
                         <div class="w-full h-full p-4 sm:p-8">
                             <div class="w-full h-full rounded-3xl overflow-hidden relative group shadow-2xl">
-                                <img src="/storage/app/public/navbarImage/navbarPhoto3.jpg" alt="Abstract digital art" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                <img src="/storage/app/public/navbarImage/photo3.jpg" alt="Abstract digital art" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                                 <div class="absolute  from-lime-300/30 to-green-200/30 mix-blend-overlay backdrop-blur-sm"></div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="carousel-item hidden absolute top-0 left-0 w-full h-full transition-all duration-700 ease-in-out">
+                        <div class="w-full h-full p-4 sm:p-8">
+                            <div class="w-full h-full rounded-3xl overflow-hidden relative group shadow-2xl">
+                                <img src="/storage/app/public/navbarImage/photo4.jpg" alt="Abstract digital art" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                <div class="absolute  from-lime-300/30 to-green-200/30 mix-blend-overlay backdrop-blur-sm"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="carousel-item hidden absolute top-0 left-0 w-full h-full transition-all duration-700 ease-in-out">
+                        <div class="w-full h-full p-4 sm:p-8">
+                            <div class="w-full h-full rounded-3xl overflow-hidden relative group shadow-2xl">
+                                <img src="/storage/app/public/navbarImage/photo5.jpg" alt="Abstract digital art" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                <div class="absolute  from-lime-300/30 to-green-200/30 mix-blend-overlay backdrop-blur-sm"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
 
                     <!-- Cards at the bottom -->
                     <div class="absolute bottom-0 left-0 right-0 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 py-6 px-4">

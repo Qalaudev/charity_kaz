@@ -11,23 +11,23 @@
                         autoplay
                         muted
                         loop
-                        class="w-full h-auto rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500 ease-in-out"
-                    ></video>
+                        class="w-full h-auto rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500 ease-in-out">
+                    </video>
                 </div>
             </div>
 
 
             <!-- Right text -->
             <div class="sm:w-1/2 p-6 animate-fade-in delay-300">
-                <div>
-        <span class="text-green-600 border-b-2 border-green-500 uppercase text-2xl tracking-wide">
-          <b>{{ $t('about_us') }}</b>
-        </span>
+            <div>
+                <span class="text-green-600 border-b-2 border-green-500 uppercase text-2xl tracking-wide">
+                  <b>{{ $t('about_us') }}</b>
+                </span>
                     <h2 class="my-4 font-bold text-4xl sm:text-5xl text-gray-800 leading-tight">
                         {{ $t('support') }} -
                         <span class="text-green-500 bg-green-100 px-2 py-1 rounded-xl animate-pulse">
-            {{ $t('together_caring') }}
-          </span>
+                            {{ $t('together_caring') }}
+                        </span>
                     </h2>
                     <p class="text-gray-600 text-lg leading-relaxed mt-4">
                         {{ $t('children_future') }}
