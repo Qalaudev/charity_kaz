@@ -80,7 +80,30 @@
     "cash": "Денежный",
     "сommodity": "Товарный",
     "times": "Время",
-    "not-found": "История благотворительности не найдена"
+    "not-found": "История благотворительности не найдена",
+    "contact_us.short_description": "Свяжитесь с нами",
+    "contact_us.call_to_action": "Свяжитесь",
+    "contact_us.feedback_message": "Ваше мнение важно для нас. Отправьте нам свои вопросы и предложения, и мы ответим в кратчайшие сроки.",
+    "contact_us.send_message": "Отправить сообщение",
+    "contact_us.fill_form_instruction": "Вы можете связаться с нами, заполнив форму ниже",
+    "contact_us.with_us": "С нами",
+    "email": "Почта",
+    "contact_us.phone_number": "Номер телефона",
+    "contact_us.message": "Сообщение",
+    "contact_us.sending": "Отправляется",
+    "contact_us.message_sent_success": "Ваше сообщение успешно отправлено!",
+    "contact_us.contact_information": "Контактная информация",
+    "contact_us.our_address": "Наш адрес",
+    "contact_us.address_line": "Город Алматы, улица Жандосова, 55",
+    "contact_us.working_hours": "Часы работы",
+    "contact_us.mon_fri": "Понедельник - Пятница",
+    "contact_us.saturday": "Суббота",
+    "contact_us.sunday": "Воскресенье",
+    "contact_us.social_networks": "Социальные сети",
+    "partners.our_partners": "Наши партнёры",
+    "partners.trusted_partners_text": "Мы работаем с надёжными партнёрами"
+
+
 
 
 }

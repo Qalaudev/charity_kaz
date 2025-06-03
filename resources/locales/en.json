@@ -82,7 +82,29 @@
     "cash": "Cash",
     "сommodity": "Commodity",
     "times": "Time",
-    "not-found": "Charity history not found"
+    "not-found": "Charity history not found",
+    "contact_us.short_description": "Contact us",
+    "contact_us.call_to_action": "Get in touch",
+    "contact_us.feedback_message": "Your opinion is important to us. Send us your questions and suggestions, and we will respond as soon as possible.",
+    "contact_us.send_message": "Send message",
+    "contact_us.fill_form_instruction": "You can contact us by filling out the form below",
+    "contact_us.with_us": "With us",
+    "email": "Email",
+    "contact_us.phone_number": "Phone number",
+    "contact_us.message": "Message",
+    "contact_us.sending": "Sending",
+    "contact_us.message_sent_success": "Your message has been sent successfully!",
+    "contact_us.contact_information": "Contact information",
+    "contact_us.our_address": "Our address",
+    "contact_us.address_line": "Almaty city, Zhandosov street, 55",
+    "contact_us.working_hours": "Working hours",
+    "contact_us.mon_fri": "Monday - Friday",
+    "contact_us.saturday": "Saturday",
+    "contact_us.sunday": "Sunday",
+    "contact_us.social_networks": "Social networks",
+    "partners.our_partners": "Our partners",
+    "partners.trusted_partners_text": "We work with trusted partners"
+
 
 
 }
