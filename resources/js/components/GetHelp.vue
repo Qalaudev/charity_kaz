@@ -1,6 +1,6 @@
 <template>
 
-    <navbar/>
+    <Navbar/>
     <div class="flex justify-center min-h-screen bg-gradient-to-br from-lime-100 to-green-200 py-16">
         <div
             class="w-full max-w-lg p-10 bg-white rounded-3xl border-2 border-green-300 shadow-lg

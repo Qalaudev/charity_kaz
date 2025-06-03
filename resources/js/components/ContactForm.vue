@@ -192,7 +192,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-semibold text-green-800 mb-1">Мекенжайымыз</h4>
-                                    <p class="text-gray-600">4517 Washington Ave. Manchester, Kentucky 39495</p>
+                                    <p class="text-gray-600">Алматы қаласы, Жандосов көшесі, 55</p>
                                 </div>
                             </div>
 
@@ -205,7 +205,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-semibold text-green-800 mb-1">Телефон</h4>
-                                    <a href="tel:+8854476456" class="text-gray-600 hover:text-green-600 transition-colors">+8854476456</a>
+                                    <a href="+7 747 062 03 72" class="text-gray-600 hover:text-green-600 transition-colors">+7 747 062 03 72</a>
                                 </div>
                             </div>
 
@@ -219,7 +219,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-semibold text-green-800 mb-1">Электрондық пошта</h4>
-                                    <a href="mailto:Givelifecharity@Gmail.Com" class="text-gray-600 hover:text-green-600 transition-colors">Givelifecharity@Gmail.Com</a>
+                                    <a href="mailto:Givelifecharity@Gmail.Com" class="text-gray-600 hover:text-green-600 transition-colors">qoldau@gmail.com</a>
                                 </div>
                             </div>
                         </div>

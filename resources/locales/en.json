@@ -51,5 +51,39 @@
         "send": "Send"
     },
 
-    "greeting": "Hello! I am your personal AI assistant."
+    "greeting": "Hello! I am your personal AI assistant.",
+    "myProfile": "My Profile",
+    "achievements": "My achievements",
+    "history-charity": "History of charity",
+    "my-records": "My records",
+    "my-card": "My card",
+    "group-that-needs-help": "group that needs help",
+    "logout": "Logout",
+    "personal-info" : "Your personal profile information",
+    "subscribe-news": "Subscribe to the news",
+    "contribution": "Your contribution:",
+    "nazvanie": "Name",
+    "surname": "Surname",
+    "gender" : "Gender",
+    "female": "Female",
+    "male": "male",
+    "telephone": "Telephone number",
+    "city": "city",
+    "almaty": "Almaty",
+    "astana" : "Astana",
+    "shymkent": "Shymkent",
+    "all-replacements": "All replacements",
+    "project_helped": "Projects that helped",
+    "symptoms ": "The symptoms you get",
+    "all-time": "All time",
+    "this-month": "this month",
+    "this-year": "this years",
+    "all-types": "All types",
+    "cash": "Cash",
+    "сommodity": "Commodity",
+    "times": "Time",
+    "not-found": "Charity history not found"
+
+
 }
+
