@@ -11,17 +11,19 @@
                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
                         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
                     </svg>
-                    Байланысқа шығыңыз
+                    {{ $t('contact_us.short_description') }}
                 </div>
                 <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 relative inline-block">
-                    Бізбен
+                    {{ $t('contact_us.with_us') }}
                     <span class="bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent animate-text-flicker">
-            Хабарласыңыз
-        </span>
+                        {{ $t('contact_us.call_to_action') }}
+
+                    </span>
                     <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-green-400 rounded-full animate-pulse delay-500"></span>
                 </h1>
                 <p class="text-xl text-gray-700 max-w-3xl mx-auto animate-fade-in-up delay-200">
-                    Сіздің пікіріңіз бізге маңызды. Сұрақтарыңыз бен ұсыныстарыңызды бізге жіберіңіз, біз тез арада жауап береміз.
+                    {{ $t('contact_us.feedback_message') }}
+
                 </p>
             </div>
 
@@ -30,8 +32,8 @@
                 <div class="lg:col-span-2">
                     <div class="bg-white/70 backdrop-blur-lg rounded-3xl shadow-xl border border-green-100 p-8 md:p-12 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
                         <div class="mb-8">
-                            <h2 class="text-3xl font-bold text-green-700 mb-3">Хабарлама жіберу</h2>
-                            <p class="text-green-600">Төмендегі форманы толтырып, бізге хабарласа аласыз</p>
+                            <h2 class="text-3xl font-bold text-green-700 mb-3">{{ $t('contact_us.send_message') }}</h2>
+                            <p class="text-green-600">{{ $t('contact_us.fill_form_instruction') }}</p>
                         </div>
 
                         <form @submit.prevent="submitForm" class="space-y-6">
@@ -39,7 +41,7 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="group">
                                     <label class="block text-sm font-semibold text-green-800 mb-2">
-                                        Аты <span class="text-red-500">*</span>
+                                        {{ $t('nazvanie') }} <span class="text-red-500">*</span>
                                     </label>
                                     <div class="relative">
                                         <input
@@ -59,7 +61,7 @@
 
                                 <div class="group">
                                     <label class="block text-sm font-semibold text-green-800 mb-2">
-                                        Тегі <span class="text-red-500">*</span>
+                                        {{ $t('surname') }} <span class="text-red-500">*</span>
                                     </label>
                                     <div class="relative">
                                         <input
@@ -82,7 +84,7 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="group">
                                     <label class="block text-sm font-semibold text-green-800 mb-2">
-                                        Электрондық пошта <span class="text-red-500">*</span>
+                                        {{ $t('email') }} <span class="text-red-500">*</span>
                                     </label>
                                     <div class="relative">
                                         <input
@@ -103,7 +105,7 @@
 
                                 <div class="group">
                                     <label class="block text-sm font-semibold text-green-800 mb-2">
-                                        Телефон нөмірі
+                                        {{ $t('contact_us.phone_number') }}
                                     </label>
                                     <div class="relative">
                                         <input
@@ -125,7 +127,7 @@
                             <!-- Message -->
                             <div class="group">
                                 <label class="block text-sm font-semibold text-green-800 mb-2">
-                                    Хабарлама <span class="text-red-500">*</span>
+                                    {{ $t('contact_us.message') }}<span class="text-red-500">*</span>
                                 </label>
                                 <div class="relative">
             <textarea
@@ -155,10 +157,11 @@
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
-              Жіберілуде...
+              {{ $t('contact_us.sending') }}...
             </span>
                                     <span v-else class="flex items-center justify-center">
-              Хабарлама жіберу
+              {{ $t('contact_us.send_message') }}
+
               <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
               </svg>
@@ -169,7 +172,7 @@
                                     <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                                     </svg>
-                                    Хабарламаңыз сәтті жіберілді!
+                                    {{ $t('contact_us.message_sent_success') }}
                                 </p>
                             </div>
                         </form>
@@ -180,7 +183,7 @@
                 <div class="space-y-8">
                     <!-- Contact Card -->
                     <div class="bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-green-100 p-8 hover:shadow-green-200 transition-shadow duration-500">
-                        <h3 class="text-3xl font-bold text-green-700 mb-6 animate-fade-in-up">Байланыс ақпараты</h3>
+                        <h3 class="text-3xl font-bold text-green-700 mb-6 animate-fade-in-up">{{ $t('contact_us.contact_information') }}</h3>
 
                         <div class="space-y-6">
                             <!-- Address -->
@@ -191,8 +194,8 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-green-800 mb-1">Мекенжайымыз</h4>
-                                    <p class="text-gray-600">4517 Washington Ave. Manchester, Kentucky 39495</p>
+                                    <h4 class="font-semibold text-green-800 mb-1">{{ $t('contact_us.our_address') }}</h4>
+                                    <p class="text-gray-600">{{ $t('contact_us.address_line') }}</p>
                                 </div>
                             </div>
 
@@ -204,8 +207,8 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-green-800 mb-1">Телефон</h4>
-                                    <a href="tel:+8854476456" class="text-gray-600 hover:text-green-600 transition-colors">+8854476456</a>
+                                    <h4 class="font-semibold text-green-800 mb-1">{{ $t('telephone') }}</h4>
+                                    <a href="+7 747 062 03 72" class="text-gray-600 hover:text-green-600 transition-colors">+7 747 062 03 72</a>
                                 </div>
                             </div>
 
@@ -218,8 +221,8 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-green-800 mb-1">Электрондық пошта</h4>
-                                    <a href="mailto:Givelifecharity@Gmail.Com" class="text-gray-600 hover:text-green-600 transition-colors">Givelifecharity@Gmail.Com</a>
+                                    <h4 class="font-semibold text-green-800 mb-1">{{ $t('email') }}</h4>
+                                    <a href="mailto:Givelifecharity@Gmail.Com" class="text-gray-600 hover:text-green-600 transition-colors">qoldau@gmail.com</a>
                                 </div>
                             </div>
                         </div>
@@ -227,19 +230,20 @@
 
                     <!-- Working Hours -->
                     <div class="bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-green-100 p-8 hover:shadow-green-200 transition-shadow duration-500">
-                        <h3 class="text-3xl font-bold text-green-700 mb-6 animate-fade-in-up">Жұмыс уақыты</h3>
+                        <h3 class="text-3xl font-bold text-green-700 mb-6 animate-fade-in-up">{{ $t('contact_us.working_hours') }}
+                        </h3>
 
                         <div class="space-y-3 text-gray-700">
                             <div class="flex justify-between items-center py-2 border-b border-dashed border-gray-200">
-                                <span>Дүйсенбі - Жұма</span>
+                                <span>{{ $t('contact_us.mon_fri') }}</span>
                                 <span class="font-semibold text-green-700">09:00 - 18:00</span>
                             </div>
                             <div class="flex justify-between items-center py-2 border-b border-dashed border-gray-200">
-                                <span>Сенбі</span>
+                                <span>{{ $t('contact_us.saturday') }}</span>
                                 <span class="font-semibold text-green-700">10:00 - 16:00</span>
                             </div>
                             <div class="flex justify-between items-center py-2">
-                                <span>Жексенбі</span>
+                                <span>{{ $t('contact_us.sunday') }}</span>
                                 <span class="font-semibold text-red-500">Демалыс</span>
                             </div>
                         </div>
@@ -247,7 +251,7 @@
 
                     <!-- Social Media -->
                     <div class="bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-green-100 p-8 hover:shadow-green-200 transition-shadow duration-500">
-                        <h3 class="text-3xl font-bold text-green-700 mb-6 animate-fade-in-up">Әлеуметтік желілер</h3>
+                        <h3 class="text-3xl font-bold text-green-700 mb-6 animate-fade-in-up">{{ $t('contact_us.social_networks') }}</h3>
 
                         <div class="flex space-x-4">
                             <a href="#" aria-label="Twitter" class="w-12 h-12 bg-green-500 hover:bg-green-600 text-white rounded-xl flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-md">
@@ -291,8 +295,8 @@
             <!-- Partners Section -->
             <div class="mt-20">
                 <div class="text-center mb-12">
-                    <h2 class="text-4xl font-extrabold text-lime-600 drop-shadow-md animate-fade-in-up duration-1000">Серіктестеріміз</h2>
-                    <p class="text-gray-500 text-lg animate-fade-in-up delay-200 duration-1000">Біз сенімді серіктестермен бірге жұмыс істейміз</p>
+                    <h2 class="text-4xl font-extrabold text-lime-600 drop-shadow-md animate-fade-in-up duration-1000">{{ $t('partners.our_partners') }}</h2>
+                    <p class="text-gray-500 text-lg animate-fade-in-up delay-200 duration-1000">{{ $t('partners.trusted_partners_text') }}</p>
                 </div>
 
                 <div class="bg-gradient-to-br from-white to-lime-50/40 backdrop-blur-xl rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] border border-lime-100/50 p-8 animate-fade-in duration-1000">

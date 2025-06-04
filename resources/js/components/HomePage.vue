@@ -5,25 +5,29 @@
             <!-- Left image -->
             <div class="sm:w-1/2 p-6 animate-fade-in">
                 <div class="text-center">
-                    <img
-                        src="/storage/app/public/mainContent/mainImage.png"
-                        alt="About Us Image"
-                        class="w-full h-auto rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500 ease-in-out"
-                    />
+                    <video
+                        src="/storage/app/public/mainContent/charity-video.mp4"
+                        controls
+                        autoplay
+                        muted
+                        loop
+                        class="w-full h-auto rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500 ease-in-out">
+                    </video>
                 </div>
             </div>
 
+
             <!-- Right text -->
             <div class="sm:w-1/2 p-6 animate-fade-in delay-300">
-                <div>
-        <span class="text-green-600 border-b-2 border-green-500 uppercase text-2xl tracking-wide">
-          <b>{{ $t('about_us') }}</b>
-        </span>
+            <div>
+                <span class="text-green-600 border-b-2 border-green-500 uppercase text-2xl tracking-wide">
+                  <b>{{ $t('about_us') }}</b>
+                </span>
                     <h2 class="my-4 font-bold text-4xl sm:text-5xl text-gray-800 leading-tight">
                         {{ $t('support') }} -
                         <span class="text-green-500 bg-green-100 px-2 py-1 rounded-xl animate-pulse">
-            {{ $t('together_caring') }}
-          </span>
+                            {{ $t('together_caring') }}
+                        </span>
                     </h2>
                     <p class="text-gray-600 text-lg leading-relaxed mt-4">
                         {{ $t('children_future') }}
@@ -105,7 +109,7 @@
             {{ $t('quote1') }}
         </h2>
 
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-500 hover:scale-105 transform animate-zoom-in">
                 <h3 class="text-4xl font-extrabold mb-3 text-green-600">109 500+</h3>
                 <p class="text-gray-700 leading-relaxed">
@@ -127,12 +131,6 @@
                 </p>
             </div>
 
-            <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-500 hover:scale-105 transform animate-zoom-in delay-600">
-                <h3 class="text-4xl font-extrabold mb-3 text-green-600">100+</h3>
-                <p class="text-gray-700 leading-relaxed">
-                    Country Member
-                </p>
-            </div>
         </div>
     </section>
 
@@ -171,79 +169,45 @@
     <f-a-q/>
 
 
-    <footer class="bg-white text-gray-900 py-16 px-4 md:px-8 transition-all duration-500 ease-in-out">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
-            <!-- Column 1 - Logo & Stats -->
-            <div class="md:col-span-3 animate-fade-in-down">
-                <div class="flex items-center gap-2 mb-6">
-                    <span class="text-green-500 text-3xl animate-bounce">❤</span>
-                    <span class="text-green-700 font-extrabold text-3xl tracking-wide">QOLDAU</span>
-                </div>
-                <p class="text-4xl font-extrabold text-green-600 mb-1">10k+</p>
-                <p class="text-lg font-medium text-gray-700 leading-snug">Worldwide Clients <br>Already Connected</p>
-            </div>
+    <footer class="bg-gray-900 text-white py-12 px-4 md:px-8">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
 
-            <!-- Column 2 - Quick Links -->
-            <div class="md:col-span-3 animate-fade-in-up delay-100">
-                <h3 class="text-xl font-bold text-green-700 mb-6">Quick Links</h3>
-                <ul class="space-y-4">
-                    <li><a href="#" class="hover:underline hover:text-green-600 transition">Home</a></li>
-                    <li><a href="#" class="hover:underline hover:text-green-600 transition">About Us</a></li>
-                    <li><a href="#" class="hover:underline hover:text-green-600 transition">Blog Post</a></li>
-                    <li><a href="#" class="hover:underline hover:text-green-600 transition">Photo Gallery</a></li>
+            <!-- Column 1: Навигация -->
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4">Қор Жайлы</h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li><a href="#" class="hover:underline hover:text-white">Оферта</a></li>
+                    <li><a href="#" class="hover:underline hover:text-white">Есеп</a></li>
+                    <li><a href="#" class="hover:underline hover:text-white">Көмек Қажет Ететін Топтар</a></li>
                 </ul>
             </div>
 
-            <!-- Column 3 - Get In Touch -->
-            <div class="md:col-span-2 animate-fade-in-up delay-200">
-                <h3 class="text-xl font-bold text-green-700 mb-6">Get In Touch</h3>
-                <ul class="space-y-4">
-                    <li><a href="#" class="hover:underline hover:text-green-600 transition">Contact Us</a></li>
-                    <li><a href="#" class="hover:underline hover:text-green-600 transition">Our Services</a></li>
+            <!-- Column 2: Көмек және Instagram -->
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4">Көмек</h3>
+                <ul class="space-y-3 text-gray-300 mb-4">
+                    <li><a href="#" class="hover:underline hover:text-white">Көмек Алу</a></li>
+                    <li><a href="#" class="hover:underline hover:text-white">Көмек Беру</a></li>
                 </ul>
-            </div>
-
-            <!-- Column 4 - Address -->
-            <div class="md:col-span-2 animate-fade-in-up delay-300">
-                <h3 class="text-xl font-bold text-green-700 mb-6">Address</h3>
-                <p class="text-gray-700 leading-relaxed">
-                    2464 Royal Ln. Mesa,<br>New Jersey 45463
-                </p>
-            </div>
-
-            <!-- Column 5 - Newsletter -->
-            <div class="md:col-span-2 animate-fade-in-up delay-500">
-                <h3 class="text-xl font-bold text-green-700 mb-6">Newsletter</h3>
-                <form class="flex mb-4 group">
-                    <input type="email" placeholder="Enter Your Email"
-                           class="px-4 py-2 w-full rounded-l-md border border-green-500 focus:outline-none focus:ring-2 focus:ring-green-400 transition text-sm">
-                    <button type="submit"
-                            class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-r-md transition-all duration-300 transform hover:scale-105">
-                        Subscribe
-                    </button>
-                </form>
-                <p class="text-gray-500 text-sm">Your email is safe with us, we don't spam.</p>
-
-                <div class="mt-6">
-                    <h4 class="font-semibold mb-3 text-green-700">Follow Me</h4>
-                    <div class="flex space-x-3">
-                        <a href="#" class="bg-green-100 hover:bg-green-200 text-green-700 p-2 rounded-full transition-transform transform hover:scale-110">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="bg-green-100 hover:bg-green-200 text-green-700 p-2 rounded-full transition-transform transform hover:scale-110">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="bg-green-100 hover:bg-green-200 text-green-700 p-2 rounded-full transition-transform transform hover:scale-110">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#" class="bg-green-100 hover:bg-green-200 text-green-700 p-2 rounded-full transition-transform transform hover:scale-110">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
+                <div class="mt-4">
+                    <h4 class="text-sm text-gray-400 mb-2">Бізді әлеуметтік желіден табыңыз:</h4>
+                    <a href="#" class="text-white text-2xl hover:text-green-400 transition">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
             </div>
+
+            <!-- Column 3: Мекен-жай -->
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4">Мекен Жай</h3>
+                <p class="text-gray-300 mb-2">Аудан-1 ышқы Ауыл, 119/225</p>
+                <h3 class="text-xl font-bold text-white mt-6 mb-2">Байланыс</h3>
+                <p class="text-gray-300">+7 747 062 30 72</p>
+            </div>
+
         </div>
     </footer>
+
 
 </template>
 <script>

@@ -1,5 +1,5 @@
 {
-    "menu": "Мәзір",
+    "menu": "Басты бет",
     "get_help": "Көмек алу",
     "contact_us": "Бізбен байланысу",
 
@@ -19,7 +19,7 @@
     "together_caring": "Бірге қамқор болайық.",
     "children_future": "Бала — Болашақ, Ал Олардың Бақытты Болашағы — Біздің Бүгінгі Қолымызда. Біз Әрбір Жанашыр Жанмен Бірге Мұқтаж Балаларға Үміт Сыйлауға Дайынбыз.",
 
-    "groups_in_need": "Көмек Қажет Ететін Топтар",
+    "groups_in_need": "Көмек қажет ететін топтар",
 
 
     "quote": "Балам деген жұрт болмаса – жұртым дейтін бала қайдан шықсын",
@@ -50,10 +50,59 @@
         "send": "Жіберу"
     },
 
-    "greeting": "Сәлем! Мен – сіздің жеке жасанды интеллект көмекшіңізмін."
-
-
-
+    "greeting": "Сәлем! Мен – сіздің жеке жасанды интеллект көмекшіңізмін.",
+    "myProfile": "Менің профилім",
+    "achievements": "Менің жетістіктерім",
+    "history-charity": "Қайырымдылық тарихы",
+    "my-records": "Менің жазылмаларым",
+    "my-card": "Менің карталарым",
+    "group-that-needs-help": "Көмек керек топ",
+    "logout": "Аккаунттан шығу",
+    "personal-info" : "Жеке профиль ақпараттарыңыз",
+    "subscribe-news": "Жаңалықтарға жазылыңыз",
+    "contribution": "Сіздің үлесіңіз:",
+    "nazvanie": "Есіміңіз",
+    "surname" : "Тегіңіз",
+    "gender" : "Жынысыңыз",
+    "female": "Әйел адам",
+    "male": "Ер адам",
+    "telephone": "Телефон нөмеріңіз",
+    "city": "Қалаңыз",
+    "almaty": "Алматы",
+    "astana" : "Астана",
+    "shymkent": "Шымкент",
+    "all-replacements": "Барлық ауыстырулар",
+    "project_helped": "Көмектескен жобалар ",
+    "symptoms ": "Алған белгілеріңіз",
+    "all-time": "Барлық уақыт",
+    "this-month": "Осы ай",
+    "this-year": "Осы жылы",
+    "all-types": "Барлық түрлері",
+    "cash": "Ақшалай",
+    "сommodity": "Тауарлай",
+    "times": "Уақыт",
+    "not-found": "Қайырымдылық тарихы табылмады",
+    "contact_us.short_description": "Байланысқа шығыңыз",
+    "contact_us.call_to_action": "Хабарласыңыз",
+    "contact_us.feedback_message": "Сіздің пікіріңіз бізге маңызды. Сұрақтарыңыз бен ұсыныстарыңызды бізге жіберіңіз, біз тез арада жауап береміз.",
+    "contact_us.send_message": "Хабарлама жіберу",
+    "contact_us.fill_form_instruction": "Төмендегі форманы толтырып, бізге хабарласа аласыз",
+    "contact_us.with_us": "Бізбен",
+    "email": "Почта",
+    "contact_us.phone_number": "Телефон нөмірі",
+    "contact_us.message": "Хабарлама",
+    "contact_us.sending": "Жіберілуде",
+    "contact_us.message_sent_success": "Хабарламаңыз сәтті жіберілді!",
+    "contact_us.contact_information": "Байланыс ақпараты",
+    "contact_us.our_address": "Мекен-жайымыз",
+    "contact_us.address_line": "Алматы қаласы, Жандосов көшесі, 55",
+    "contact_us.mon_fri": "Дүйсенбі - Жұма",
+    "contact_us.working_hours": "Жұмыс уақыты",
+    "contact_us.saturday": "Сенбі",
+    "contact_us.sunday": "Жексенбі",
+    "contact_us.social_networks": "Әлеуметтік желілер",
+    "partners.our_partners": "Серіктестеріміз",
+    "partners.trusted_partners_text": "Біз сенімді серіктестермен бірге жұмыс істейміз"
 
 
 

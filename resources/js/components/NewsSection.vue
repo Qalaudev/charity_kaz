@@ -203,6 +203,7 @@ export default {
     name: 'NewsSection',
     data() {
         return {
+            showModalButton:false,
             news: [],
             showModal: false,
             loading: false,
