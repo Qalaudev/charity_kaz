@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Broadcasting routes
+        require base_path('routes/channels.php');
     }
 }

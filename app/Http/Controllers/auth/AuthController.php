@@ -18,6 +18,7 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required',
@@ -34,9 +35,11 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials, $request->remember)) {
-            $user = Auth::user();
-            $token = $user->createToken('auth_token')->plainTextToken;
 
+            $user = Auth::user();
+
+
+            $token = $user->createToken('auth_token')->plainTextToken;
 
             return response()->json([
                 'success' => true,
@@ -54,17 +57,17 @@ class AuthController extends Controller
     /**
      * Выход пользователя из системы
      */
-   /* public function logout(Request $request)
-    {
+    /* public function logout(Request $request)
+     {
 
-// Удаляем текущий токен авторизации
-        $request->user()->currentAccessToken()->delete();
+ // Удаляем текущий токен авторизации
+         $request->user()->currentAccessToken()->delete();
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Выход выполнен успешно'
-        ]);
-    }*/
+         return response()->json([
+             'success' => true,
+             'message' => 'Выход выполнен успешно'
+         ]);
+     }*/
 
     public function logout(Request $request)
     {

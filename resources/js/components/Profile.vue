@@ -103,6 +103,15 @@
                     </li>
                     <li>
                         <button
+                            @click="chats"
+                            :class="showSection === 'chats' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
+                            class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
+                        >
+                            Хабарлама чаты
+                        </button>
+                    </li>
+                    <li>
+                        <button
                             @click="logout"
                             class="w-full text-left hover:text-red-500 transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95"
                         >
@@ -615,6 +624,16 @@
                     <charity-group class="animate-fadeInScale" />
                 </section>
 
+
+                <!-- Chat-->
+                <section
+                    v-show="showSection === 'chats'"
+                    class="transition-opacity duration-500 ease-in-out"
+                    :class="{ 'opacity-100': showSection === 'chats', 'opacity-0 absolute': showSection !== 'chats' }"
+                >
+                    <chat class="animate-fadeInScale" />
+                </section>
+
                 <!-- Helps Section -->
                 <section
                     v-show="showSection === 'groups'"
@@ -673,9 +692,10 @@
 import axios from "axios";
 import Navbar from './design/Navbar.vue';
 import CharityGroup from './CharityGroup.vue';
+import Chat from './design/Chat.vue';
 export default {
     components: {
-        CharityGroup,Navbar
+        CharityGroup,Navbar,Chat
     },
     data() {
         return {
@@ -797,7 +817,7 @@ export default {
 
     async created(){
         try{
-            const response = await axios.get('/user');
+            const response = await axios.get('/api/user');
             this.user = response.data;
             this.form = response.data;
             this.calculateTotalDonated();
@@ -892,6 +912,17 @@ export default {
             try {
                 const response = await axios.get('/group');
                 this.helps = response.data;
+            } catch (error) {
+                console.error("Деректерді алу кезінде қате:", error);
+            }
+        },
+
+
+        async chats() {
+            this.showSection = 'chats';
+            try {
+                // const response = await axios.get('/chats');
+                // this.helps = response.data;
             } catch (error) {
                 console.error("Деректерді алу кезінде қате:", error);
             }

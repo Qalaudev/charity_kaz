@@ -1,57 +1,74 @@
-/**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
- */
 
+// 1. resources/js/bootstrap.js - WebSocket мәселесін шешу
 import axios from 'axios';
-import { createApp } from 'vue';
-import App from './App.vue';
-import router from './router';
-
+import Echo from 'laravel-echo';
+import Pusher from 'pusher-js';
 
 window.axios = axios;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-// Axios-ты дұрыс конфигурациялау
-
-
-const authToken = localStorage.getItem('token');
-if (authToken) {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
+// CSRF токен
+let token = document.head.querySelector('meta[name="csrf-token"]');
+if (token) {
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 }
 
-// 🛡️ CSRF токен — Laravel үшін қажет
+// Pusher дебуг режимі
+Pusher.logToConsole = import.meta.env.DEV;
 
-const csrfTokenMeta = document.head.querySelector('meta[name="csrf-token"]');
-if (csrfTokenMeta) {
-    axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfTokenMeta.content;
-} else {
-    console.error('CSRF token not found');
-}
+window.Pusher = Pusher;
 
-// Инициализация Vue и подключение маршрутизации
-const app = createApp(App);
-app.use(router);
-app.mount('#app');
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
+// Echo конфигурациясы - WebSocket мәселелерін шешеді
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: import.meta.env.VITE_PUSHER_APP_KEY,
+    cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
 
-// import Echo from 'laravel-echo';
+    // WebSocket конфигурациясы
+    forceTLS: true,
+    encrypted: true,
 
-// import Pusher from 'pusher-js';
-// window.Pusher = Pusher;
+    // Fallback опциялары
+    enabledTransports: ['ws', 'wss'],
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: import.meta.env.VITE_PUSHER_APP_KEY,
-//     cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER ?? 'mt1',
-//     wsHost: import.meta.env.VITE_PUSHER_HOST ? import.meta.env.VITE_PUSHER_HOST : `ws-${import.meta.env.VITE_PUSHER_APP_CLUSTER}.pusher.com`,
-//     wsPort: import.meta.env.VITE_PUSHER_PORT ?? 80,
-//     wssPort: import.meta.env.VITE_PUSHER_PORT ?? 443,
-//     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
-//     enabledTransports: ['ws', 'wss'],
-// });
+    // Timeout настройкалары
+    activityTimeout: 120000,
+    pongTimeout: 30000,
+    unavailableTimeout: 10000,
+
+    // Auth үшін
+    authorizer: (channel, options) => {
+        return {
+            authorize: (socketId, callback) => {
+                axios.post('/broadcasting/auth', {
+                    socket_id: socketId,
+                    channel_name: channel.name
+                }, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
+                    .then(response => {
+                        callback(false, response.data);
+                    })
+                    .catch(error => {
+                        console.error('Auth error:', error);
+                        callback(true, error);
+                    });
+            }
+        };
+    },
+});
+
+// Connection event listeners
+window.Echo.connector.pusher.connection.bind('connected', () => {
+    console.log('Pusher connected successfully');
+});
+
+window.Echo.connector.pusher.connection.bind('disconnected', () => {
+    console.log('Pusher disconnected');
+});
+
+window.Echo.connector.pusher.connection.bind('error', (error) => {
+    console.error('Pusher connection error:', error);
+});
