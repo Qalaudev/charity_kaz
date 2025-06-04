@@ -54,7 +54,7 @@ Route::post('/gethelp',[getHelpController::class,'getHelp'])->name('getHelp');
 Route::get('/get-helps',[getHelpController::class,'getOneHelp'])->name('getOneHelp');
 Route::get('/user',[ProfileUserController::class,'authUser'])->name('user.index');
 
-Route::post('/profile', [ProfileUserController::class, 'store'])->name('profileStore');
+Route::middleware('auth:sanctum')->post('/profile', [ProfileUserController::class, 'store'])->name('profileStore');
 
 Route::post('/contact', [ContactController::class, 'sendMail'])->name('sendMail');
 
@@ -63,8 +63,8 @@ Route::post('/verify-code', [RegisterController::class, 'verifyCode']);
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('/api/user', [ChatController::class, 'getCurrentUser']);
     Route::get('/users-all', [ChatController::class, 'getAllUsers']);
+    Route::get('/users-all-dddd', [ProfileUserController::class, 'authUser']);
     Route::post('/message/{friendId}', [ChatController::class, 'sendMessage']);
     Route::get('/message/{friendId}', [ChatController::class, 'getMessages']);
 });
