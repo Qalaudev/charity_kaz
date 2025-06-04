@@ -15,6 +15,7 @@
                     <div class=" text-gray-500" style="font-size: 10px">{{ user.email }}</div>
                 </li>
             </ul>
+
         </aside>
 
         <!-- Чат -->
