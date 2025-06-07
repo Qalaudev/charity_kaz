@@ -23,7 +23,7 @@
 
                 <!-- Кнопкалар -->
                 <div class="flex items-center gap-3">
-                    <a href="/give-help">
+                    <a href="/making-donation">
                     <button class="bg-emerald-400 hover:bg-emerald-500 text-white font-medium py-2 px-4 rounded-xl shadow-md transition duration-300 transform hover:scale-105">
                         {{ $t('help') }}
                     </button>

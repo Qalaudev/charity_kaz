@@ -190,7 +190,7 @@
                  transition duration-300 ease-in-out transform hover:scale-105
                  active:scale-95"
                 >
-                    Отправить
+                    {{ $t('send') }}
                 </button>
             </form>
         </div>

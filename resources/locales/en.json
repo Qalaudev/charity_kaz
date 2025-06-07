@@ -128,8 +128,19 @@
     "about_fund": "About the Fund",
     "report":"Report",
     "loadingMessage": "Please wait a moment, the download is in progress...",
-    "offer": "Offer"
-
+    "offer": "Offer",
+    "charity_help": "Charitable Help",
+    "psychological_help": "Psychological Support",
+    "volunteering_service": "Volunteering Service",
+    "mission_statement": "We strive to make the world a better place by helping people. With your support, we can change the lives of many.",
+    "helped_families": "Families who received help",
+    "collected_funds": "Collected funds",
+    "active_donors": "Active donors",
+    "active_projects": "Active projects",
+    "aid_amount": "Aid Amount (₸)",
+    "select_project": "Select Project",
+    "message_optional": "Message (optional)",
+    "income_histories": "Income Histories"
 
 
 }

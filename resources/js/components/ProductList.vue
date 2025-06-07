@@ -79,13 +79,13 @@
                     <!-- Cards at the bottom -->
                     <div class="absolute bottom-0 left-0 right-0 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 py-6 px-4">
                         <a href="/charity-help" class="bg-white/80 text-green-800 px-6 py-4 rounded-2xl shadow-lg text-center text-lg font-semibold hover:bg-green-100 hover:-translate-y-1 transition duration-300 backdrop-blur-sm">
-                            Қайырымдылық Көмек
+                            {{ $t('charity_help') }}
                         </a>
                         <a href="/ai" class="bg-white/80 text-green-800 px-6 py-4 rounded-2xl shadow-lg text-center text-lg font-semibold hover:bg-green-100 hover:-translate-y-1 transition duration-300 backdrop-blur-sm">
-                            Психологиялық Көмек
+                            {{ $t('psychological_help') }}
                         </a>
                         <a href="/volunteer-service" class="bg-white/80 text-green-800 px-6 py-4 rounded-2xl shadow-lg text-center text-lg font-semibold hover:bg-green-100 hover:-translate-y-1 transition duration-300 backdrop-blur-sm">
-                            Еріктілік Қызметі
+                            {{ $t('volunteering_service') }}
                         </a>
                     </div>
                 </div>

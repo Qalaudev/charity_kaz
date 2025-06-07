@@ -9,10 +9,10 @@
             <div class="max-w-7xl mx-auto px-6 py-10">
                 <div class="text-center max-w-3xl mx-auto animate-fadeInUp">
                     <h1 class="text-5xl font-extrabold text-green-800 mb-5 drop-shadow-md tracking-wide">
-                        Қайырымдылық Көмек
+                        {{ $t('charity_help') }}
                     </h1>
                     <p class="text-lg text-green-700 leading-relaxed">
-                        Біз адамдарға көмек көрсету арқылы әлемді жақсы етуге тырысамыз. Сіздің қолдауыңыз арқылы біз көптеген адамдардың өмірін өзгерте аламыз.
+                        {{ $t('mission_statement')}}
                     </p>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                     >
                         1,234
                     </div>
-                    <div class="text-green-600 font-semibold tracking-wide">Көмек алған отбасылар</div>
+                    <div class="text-green-600 font-semibold tracking-wide">{{ $t('helped_families') }}</div>
                     <span
                         class="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-green-300 opacity-40 animate-ping-slow group-hover:opacity-60 transition-opacity"
                     ></span>
@@ -44,7 +44,7 @@
                     >
                         ₸2.5М
                     </div>
-                    <div class="text-green-600 font-semibold tracking-wide">Жиналған қаражат</div>
+                    <div class="text-green-600 font-semibold tracking-wide">{{ $t('collected_funds') }}</div>
                     <span
                         class="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-green-400 opacity-40 animate-ping-slow group-hover:opacity-60 transition-opacity"
                     ></span>
@@ -58,7 +58,7 @@
                     >
                         856
                     </div>
-                    <div class="text-green-600 font-semibold tracking-wide">Белсенді донорлар</div>
+                    <div class="text-green-600 font-semibold tracking-wide">{{ $t('active_donors') }}</div>
                     <span
                         class="absolute -bottom-6 -right-6 w-24 h-24 rounded-full bg-green-300 opacity-40 animate-ping-slow group-hover:opacity-60 transition-opacity"
                     ></span>
@@ -72,7 +72,7 @@
                     >
                         45
                     </div>
-                    <div class="text-green-600 font-semibold tracking-wide">Белсенді жобалар</div>
+                    <div class="text-green-600 font-semibold tracking-wide">{{ $t('active_projects') }}</div>
                     <span
                         class="absolute -bottom-6 -left-6 w-24 h-24 rounded-full bg-green-400 opacity-40 animate-ping-slow group-hover:opacity-60 transition-opacity"
                     ></span>
@@ -82,7 +82,7 @@
             <!-- Active Projects -->
             <div class="mb-16">
                 <h2 class="text-4xl font-extrabold text-green-800 mb-12 text-center drop-shadow-md animate-fadeIn">
-                    Белсенді Жобалар
+                    {{ $t('active_projects') }}
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     <div
@@ -115,7 +115,7 @@
                                 @click="donateToProject(project.id)"
                                 class="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-3 rounded-lg font-semibold tracking-wide shadow-lg hover:shadow-xl hover:scale-105 transform transition"
                             >
-                                Ауысу
+                                {{ $t('help') }}
                             </button>
                         </div>
                     </div>
@@ -125,12 +125,12 @@
             <!-- Donation Form -->
             <div class="bg-white rounded-3xl shadow-2xl p-10 mb-16 max-w-3xl mx-auto animate-fadeInUp">
                 <h2 class="text-4xl font-extrabold text-green-900 mb-10 text-center drop-shadow-md">
-                    Қайырымдылық Көмегі
+                    {{ $t('charity_help') }}
                 </h2>
                 <form @submit.prevent="submitDonation">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                         <div>
-                            <label class="block text-green-700 font-semibold mb-2">Аты-жөні</label>
+                            <label class="block text-green-700 font-semibold mb-2">{{ $t('nazvanie')}}</label>
                             <input
                                 v-model="donationForm.name"
                                 type="text"
@@ -139,7 +139,7 @@
                             />
                         </div>
                         <div>
-                            <label class="block text-green-700 font-semibold mb-2">Электрондық пошта</label>
+                            <label class="block text-green-700 font-semibold mb-2">{{ $t('email') }}</label>
                             <input
                                 v-model="donationForm.email"
                                 type="email"
@@ -150,7 +150,7 @@
                     </div>
 
                     <div class="mb-8">
-                        <label class="block text-green-700 font-semibold mb-3">Көмек мөлшері (₸)</label>
+                        <label class="block text-green-700 font-semibold mb-3">{{ $t('aid_amount') }}</label>
                         <div class="grid grid-cols-3 md:grid-cols-6 gap-3 mb-6">
                             <button
                                 v-for="amount in presetAmounts"
@@ -176,7 +176,7 @@
                     </div>
 
                     <div class="mb-8">
-                        <label class="block text-green-700 font-semibold mb-3">Жоба таңдау</label>
+                        <label class="block text-green-700 font-semibold mb-3">{{ $t('select_project') }}</label>
                         <select
                             v-model="donationForm.projectId"
                             class="w-full px-5 py-4 border border-green-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-green-400 focus:border-transparent transition"
@@ -189,7 +189,7 @@
                     </div>
 
                     <div class="mb-8">
-                        <label class="block text-green-700 font-semibold mb-3">Хабарлама (міндетті емес)</label>
+                        <label class="block text-green-700 font-semibold mb-3">{{ $t('message_optional') }}</label>
                         <textarea
                             v-model="donationForm.message"
                             rows="5"
@@ -210,7 +210,7 @@
 
             <!-- Success Stories -->
             <div>
-                <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Табыс Тарихтары</h2>
+                <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">{{ $t('income_histories') }}</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div v-for="story in successStories" :key="story.id" class="bg-white rounded-xl p-6 shadow-lg">
                         <div class="flex items-center mb-4">
