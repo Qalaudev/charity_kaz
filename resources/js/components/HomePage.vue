@@ -116,21 +116,21 @@
             <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-500 hover:scale-105 transform animate-zoom-in">
                 <h3 class="text-4xl font-extrabold mb-3 text-green-600">109 500+</h3>
                 <p class="text-gray-700 leading-relaxed">
-                    2025 Жылы Қазақстанда Мүгедектігі Бар Балалардың Жалпы Саны.
+                    {{$t('children_with_disabilities_2025')}}
                 </p>
             </div>
 
             <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-500 hover:scale-105 transform animate-zoom-in delay-200">
                 <h3 class="text-4xl font-extrabold mb-3 text-green-600">31 000+</h3>
                 <p class="text-gray-700 leading-relaxed">
-                    2025 Жылы Қазақстанда Тіркелген Жетім Және Ата-Анасының Қамқорлығынсыз Қалған Балалар.
+                    {{ $t('orphans_and_children_without_parents_care_2025') }}
                 </p>
             </div>
 
             <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-500 hover:scale-105 transform animate-zoom-in delay-400">
                 <h3 class="text-4xl font-extrabold mb-3 text-green-600">8,92%</h3>
                 <p class="text-gray-700 leading-relaxed">
-                    Көпбалалы Отбасылар Арасында Кедейлік Деңгейі.
+                    {{ $t('poverty_level_among_large_families') }}
                 </p>
             </div>
 
@@ -149,7 +149,7 @@
 
     <div v-show="chatVisible" id="chat-window" class="fixed bottom-24 right-4 w-80 max-w-sm h-[480px] bg-white shadow-2xl rounded-2xl flex flex-col z-50 border border-gray-200 overflow-hidden animate__animated animate__fadeInUp">
         <div class="relative bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center py-3 px-4 font-semibold text-lg">
-            AI Чат
+            {{ $t('ai_chat') }}
             <button @click="toggleChat" class="absolute right-3 top-3 text-white hover:text-gray-300 text-sm">✖</button>
         </div>
 
@@ -164,7 +164,7 @@
         <div class="p-3 bg-white border-t border-gray-200 flex items-center space-x-2">
             <input v-model="inputText" placeholder="Хабарлама жаз..." class="flex-1 text-sm px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400" @keydown.enter="sendMessage" />
             <button @click="sendMessage" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm rounded-full transition">
-                Жіберу
+                {{ $t('send') }}
             </button>
         </div>
     </div>
@@ -177,20 +177,56 @@
 
             <!-- Column 1: Навигация -->
             <div>
-                <h3 class="text-xl font-bold text-white mb-4">Қор Жайлы</h3>
+                <h3 class="text-xl font-bold text-white mb-4">{{ $t('about_fund') }}</h3>
                 <ul class="space-y-3 text-gray-300">
-                    <li><a href="#" class="hover:underline hover:text-white">Оферта</a></li>
-                    <li><a href="#" class="hover:underline hover:text-white">Есеп</a></li>
-                    <li><a href="#" class="hover:underline hover:text-white">Көмек Қажет Ететін Топтар</a></li>
+                    <li><a href="#" @click.prevent="downloadOffer" class="hover:underline hover:text-white">{{ $t('offer') }}</a></li>
+                    <li><a href="#" @click.prevent="downloadReport" class="hover:underline hover:text-white">{{ $t('report') }}</a></li>
+                    <li><a href="#" class="hover:underline hover:text-white">{{ $t('groups_in_need') }}</a></li>
                 </ul>
             </div>
 
+            <!--  offer modal  -->
+            <div v-if="showModalOffer" class="fixed inset-0 backdrop-blur-sm bg-white/10 flex items-center justify-center z-50">
+                <div class="bg-white p-6 rounded-xl shadow-xl text-center max-w-sm w-full">
+
+                    <p class="text-lg font-semibold mb-4 text-gray-800">⏳ {{ $t('loadingMessage') }}</p>
+
+                    <div v-if="loading" class="flex justify-center">
+                        <svg class="animate-spin h-10 w-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor"
+                                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!--  download report  -->
+            <div v-if="showModalReport" class="fixed inset-0 backdrop-blur-sm bg-white/10 flex items-center justify-center z-50">
+                <div class="bg-white p-6 rounded-xl shadow-xl text-center max-w-sm w-full">
+
+                    <p class="text-lg font-semibold mb-4 text-gray-800">⏳ {{ $t('loadingMessage') }}</p>
+
+                    <div v-if="loadingReport" class="flex justify-center">
+                        <svg class="animate-spin h-10 w-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor"
+                                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+
+
             <!-- Column 2: Көмек және Instagram -->
             <div>
-                <h3 class="text-xl font-bold text-white mb-4">Көмек</h3>
+                <h3 class="text-xl font-bold text-white mb-4">{{ $t('help') }}</h3>
                 <ul class="space-y-3 text-gray-300 mb-4">
-                    <li><a href="#" class="hover:underline hover:text-white">Көмек Алу</a></li>
-                    <li><a href="#" class="hover:underline hover:text-white">Көмек Беру</a></li>
+                    <li><a href="/help" class="hover:underline hover:text-white">{{ $t('get_help') }}</a></li>
+                    <li><a href="/making-donation" class="hover:underline hover:text-white">{{ $t('help') }}</a></li>
                 </ul>
                 <div class="mt-4">
                     <h4 class="text-sm text-gray-400 mb-2">Бізді әлеуметтік желіден табыңыз:</h4>
@@ -237,6 +273,7 @@ import NewsSection from "@/components/NewsSection.vue";
 import FAQ from "@/components/design/FAQ.vue";
 import GroupDetails from "@/components/GroupDetails.vue";
 import QRCodeVue from 'qrcode.vue';
+
 
 const toggleChat = () => {
     const chatWindow = document.getElementById('chat-window');
@@ -349,8 +386,12 @@ export default {
             chatVisible: false,
             inputText: '',
             messages: [],
-            showModal: false,     // Модаль ашық па?
-            selectedGroup: {}     // Таңдалған топ
+            showModal: false,
+            selectedGroup: {},
+            showModalOffer:false,
+            loading:false,
+            showModalReport:false,
+            loadingReport:false
         };
     },
     created() {
@@ -380,11 +421,9 @@ export default {
                 }
             });
         },
-
         goToDetails(id) {
             this.$router.push(`/group/${id}`);
         },
-
         toggleChat() {
             this.chatVisible = !this.chatVisible;
         },
@@ -412,8 +451,35 @@ export default {
             if (value){
                 this.$router.push('/making-donation');
             }
-        }
+        },
+        downloadOffer(){
+          this.showModalOffer = true;
+          this.loading = true;
 
+          setTimeout(()=>{
+              this.loading = false;
+              this.showModalOffer = false;
+
+              const link = document.createElement('a');
+              link.href = '/offerta/offerta.docx';
+              link.download = 'Қайырымдылық көмегі туралы ұсыныс шарты.docx';
+              link.click();
+          },2000);
+        },
+        downloadReport(){
+            this.loadingReport = true;
+            this.showModalReport = true;
+
+            setTimeout(()=>{
+                this.loadingReport = false;
+                this.showModalReport = false;
+
+                const link = document.createElement('a');
+                link.href = '/report/report.docx';
+                link.download = 'reportCharity.docx';
+                link.click();
+            },2000)
+        }
     },
 };
 </script>

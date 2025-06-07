@@ -10,7 +10,7 @@
                 class="text-3xl font-extrabold text-green-700 mb-8 text-center
                animate-fadeInDown"
             >
-                Форма для получение помощи
+                {{ $t('help_form') }}
             </h2>
 
             <div
@@ -27,7 +27,7 @@
                         for="name"
                         class="block text-green-800 font-semibold mb-1 tracking-wide"
                     >
-                        Имя
+                        {{ $t('nazvanie') }}
                     </label>
                     <input
                         type="text"
@@ -54,7 +54,7 @@
                         for="surname"
                         class="block text-green-800 font-semibold mb-1 tracking-wide"
                     >
-                        Фамилия
+                        {{ $t('surname') }}
                     </label>
                     <input
                         type="text"
@@ -81,7 +81,7 @@
                         for="number"
                         class="block text-green-800 font-semibold mb-1 tracking-wide"
                     >
-                        Номер телефона
+                        {{ $t('telephone')}}
                     </label>
                     <input
                         type="tel"
@@ -108,7 +108,7 @@
                         for="email"
                         class="block text-green-800 font-semibold mb-1 tracking-wide"
                     >
-                        Электронная почта
+                        {{ $t('email')}}
                     </label>
                     <input
                         type="email"
@@ -135,7 +135,7 @@
                         for="file"
                         class="block text-green-800 font-semibold mb-1 tracking-wide"
                     >
-                        Документы
+                        {{ $t('document') }}
                     </label>
                     <input
                         type="file"
@@ -161,7 +161,7 @@
                         for="info"
                         class="block text-green-800 font-semibold mb-1 tracking-wide"
                     >
-                        Информация о себе
+                        {{ $t('about_yourself')}}
                     </label>
                     <textarea
                         id="info"

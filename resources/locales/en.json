@@ -19,7 +19,7 @@
     "together_caring": "Let's care together.",
     "children_future": "A child is the future, and their happy future is in our hands today. We are ready to give hope to children in need with every caring soul.",
 
-    "groups_in_need": "Groups in Need of Assistance",
+    "groups_in_need": "Groups in need of assistance",
 
     "quote": "If there are no people who care for the children, how can a child who calls others 'my people' emerge?",
     "quote1": "One heart brings change, but hundreds of hearts create a miracle",
@@ -103,7 +103,32 @@
     "contact_us.sunday": "Sunday",
     "contact_us.social_networks": "Social networks",
     "partners.our_partners": "Our partners",
-    "partners.trusted_partners_text": "We work with trusted partners"
+    "partners.trusted_partners_text": "We work with trusted partners",
+    "help_form": "Help Request Form",
+    "document" : "document",
+    "about_yourself": "Information about yourself",
+    "have_question": "Do you have a question?",
+    "faq": "Frequently Asked Questions",
+    "faqs": {
+        "q1": "Let’s Act Together for Every Child’s Bright Future.",
+        "a1": "We work together for every child's bright future. Our goal is to provide quality education and support their development.",
+        "q2": "Let’s Start Doing the Right Thing Now",
+        "a2": "Raising children properly is our top priority. We aim to guide them in the right direction and brighten their future.",
+        "q3": "Can I Donate Without Revealing My Name?",
+        "a3": "Absolutely, you can donate anonymously. We keep your personal data confidential and respect your preferences.",
+        "q4": "Join Together for a Better Life",
+        "a4": "To live well, education and unity are essential. We strive to provide children with quality education for a better future.",
+        "q5": "How Can I Cancel Monthly Donations?",
+        "a5": "To cancel your monthly donation, log into your account, go to the 'Donations' section, click 'Cancel', or contact our support team."
+    },
+    "children_with_disabilities_2025": "Total Number of Children with Disabilities in Kazakhstan in 2025",
+    "orphans_and_children_without_parents_care_2025": "Registered Orphans and Children Without Parental Care in Kazakhstan in 2025",
+    "poverty_level_among_large_families": "Poverty Level Among Large Families",
+    "ai_chat": "AI Chat",
+    "about_fund": "About the Fund",
+    "report":"Report",
+    "loadingMessage": "Please wait a moment, the download is in progress...",
+    "offer": "Offer"
 
 
 

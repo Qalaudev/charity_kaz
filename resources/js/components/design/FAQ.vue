@@ -1,9 +1,9 @@
 <template>
     <div class="min-h-screen bg-mint-50 py-12">
         <div class="container mx-auto px-4 max-w-7xl">
-            <div class="text-gray-700 mb-2">Сұрағыңыз Бар Ма?</div>
+            <div class="text-gray-700 mb-2">{{$t('have_question')}}</div>
             <h1 class="text-4xl font-bold text-gray-800 mb-10">
-                Жиі Қойылатын Сұрақтар
+                {{ $t('faq') }}
             </h1>
 
             <div class="grid md:grid-cols-2 gap-8">
@@ -47,48 +47,48 @@ export default {
     name: 'FAQComponent',
     data() {
         return {
-            faqImage:
-                '/storage/app/public/mainContent/img.png',
-            faqItems: [
-                {
-                    question: 'Әр Баланың Жарқын Болашағы Үшін Бірге Әрекет Етейік.',
-                    answer:
-                        'Біз әр баланың жарқын болашағы үшін бірге жұмыс істейміз. Біздің мақсатымыз - балаларға сапалы білім беру және олардың дамуына қолдау көрсету.',
-                    isOpen: true,
-                },
-                {
-                    question: 'Дұрыс Істеуді Қазір Бастайық',
-                    answer:
-                        'Балаларға дұрыс тәрбие беру - біздің басты міндетіміз. Біз балаларға дұрыс бағыт-бағдар беріп, олардың болашағын жарқын етуге тырысамыз.',
-                    isOpen: false,
-                },
-                {
-                    question: 'Мен Аты-Жөнімді Көрсетпей Қайырымдылық Жасай Аламын ба?',
-                    answer:
-                        'Әрине, сіз аты-жөніңізді көрсетпей қайырымдылық жасай аласыз. Біз сіздің жеке ақпаратыңызды құпия сақтаймыз және сіздің қалауыңызды құрметтейміз.',
-                    isOpen: false,
-                },
-                {
-                    question: 'Жақсы Өмір Үшін Білген Бірге Болыңыз',
-                    answer:
-                        'Жақсы өмір сүру үшін білім мен бірлік маңызды. Біз балаларға сапалы білім беру арқылы олардың болашағын жарқын етуге тырысамыз.',
-                    isOpen: false,
-                },
-                {
-                    question: 'Ай Сайынғы Қайырымдылықты Қалай Тоқтатамын?',
-                    answer:
-                        'Ай сайынғы қайырымдылықты тоқтату үшін жеке кабинетіңізге кіріп, "Қайырымдылық" бөліміне өтіп, "Тоқтату" батырмасын басыңыз немесе біздің қолдау қызметіне хабарласыңыз.',
-                    isOpen: false,
-                },
-            ],
+            faqImage: '/storage/app/public/mainContent/img.png',
+            openIndex: 0,
         };
+    },
+    computed: {
+        faqItems() {
+            return [
+                {
+                    question: this.$t('faqs.q1'),
+                    answer: this.$t('faqs.a1'),
+                    isOpen: this.openIndex === 0,
+                },
+                {
+                    question: this.$t('faqs.q2'),
+                    answer: this.$t('faqs.a2'),
+                    isOpen: this.openIndex === 1,
+                },
+                {
+                    question: this.$t('faqs.q3'),
+                    answer: this.$t('faqs.a3'),
+                    isOpen: this.openIndex === 2,
+                },
+                {
+                    question: this.$t('faqs.q4'),
+                    answer: this.$t('faqs.a4'),
+                    isOpen: this.openIndex === 3,
+                },
+                {
+                    question: this.$t('faqs.q5'),
+                    answer: this.$t('faqs.a5'),
+                    isOpen: this.openIndex === 4,
+                },
+            ];
+        }
     },
     methods: {
         toggleItem(index) {
-            this.faqItems[index].isOpen = !this.faqItems[index].isOpen;
+            this.openIndex = this.openIndex === index ? null : index;
         },
     },
 };
+
 </script>
 
 <style scoped>
