@@ -112,6 +112,15 @@
                     </li>
                     <li>
                         <button
+                            @click="users"
+                            :class="showSection === 'users' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
+                            class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
+                        >
+                            Қолданушылар
+                        </button>
+                    </li>
+                    <li>
+                        <button
                             @click="logout"
                             class="w-full text-left hover:text-red-500 transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95"
                         >
@@ -634,6 +643,15 @@
                     <chat class="animate-fadeInScale" />
                 </section>
 
+                <!-- Users-->
+                <section
+                    v-show="showSection === 'users'"
+                    class="transition-opacity duration-500 ease-in-out"
+                    :class="{ 'opacity-100': showSection === 'users', 'opacity-0 absolute': showSection !== 'users' }"
+                >
+                    <users class="animate-fadeInScale" />
+                </section>
+
                 <!-- Helps Section -->
                 <section
                     v-show="showSection === 'groups'"
@@ -693,9 +711,10 @@ import axios from "axios";
 import Navbar from './design/Navbar.vue';
 import CharityGroup from './CharityGroup.vue';
 import Chat from './design/Chat.vue';
+import Users from './design/Users.vue';
 export default {
     components: {
-        CharityGroup,Navbar,Chat
+        CharityGroup,Navbar,Chat,Users
     },
     data() {
         return {
@@ -920,6 +939,15 @@ export default {
 
         async chats() {
             this.showSection = 'chats';
+            try {
+                // const response = await axios.get('/chats');
+                // this.helps = response.data;
+            } catch (error) {
+                console.error("Деректерді алу кезінде қате:", error);
+            }
+        },
+        async users() {
+            this.showSection = 'users';
             try {
                 // const response = await axios.get('/chats');
                 // this.helps = response.data;

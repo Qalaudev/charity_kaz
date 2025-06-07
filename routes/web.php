@@ -69,6 +69,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/message/{friendId}', [ChatController::class, 'getMessages']);
 });
 
+Route::prefix('users')->group(function () {
+    Route::get('/', [ProfileUserController::class, 'index']);
+    Route::patch('/{user}/role', [ProfileUserController::class, 'updateRole']);
+});
+
 // Broadcast authorization routes
 Route::middleware(['auth:sanctum'])->group(function () {
     Broadcast::channel('chat{userId}', function ($user, $userId) {
