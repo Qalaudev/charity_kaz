@@ -139,7 +139,12 @@
     "aid_amount": "Көмек мөлшері (₸)",
     "select_project": "Жоба таңдау",
     "message_optional": "Хабарлама (міндетті емес)",
-    "income_histories": "Табыс Тарихтары"
+    "income_histories": "Табыс Тарихтары",
+    "menus" : "Мәзір",
+    "help_create_group" : "Көмек керек топты құру",
+    "message_chat": "Хабарлама чаты",
+    "personal_profile_info": "Жеке профиль ақпараттарыңыз",
+    "your_contribution": "Сіздің үлесіңіз:"
 
 
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DonationController;
 use App\Http\Controllers\getHelpController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\LoginController;
@@ -67,6 +68,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/users-all-dddd', [ProfileUserController::class, 'authUser']);
     Route::post('/message/{friendId}', [ChatController::class, 'sendMessage']);
     Route::get('/message/{friendId}', [ChatController::class, 'getMessages']);
+
+    Route::post('/donations', [DonationController::class, 'storeDonation']);
+    Route::get('/my-donations', [DonationController::class, 'myDonations']);
+
+
+
 });
 
 // Broadcast authorization routes

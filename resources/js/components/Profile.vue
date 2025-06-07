@@ -1,5 +1,5 @@
 <template>
-    <navbar/>
+    <Navbar></Navbar>
     <!-- Container -->
     <div class="bg-gray-100 py-10 min-h-screen flex justify-center items-start px-4 sm:px-6">
         <div class="w-full max-w-5xl bg-white rounded-xl shadow-lg flex flex-col md:flex-row overflow-hidden">
@@ -36,7 +36,7 @@
   ]"
             >
                 <h2 class="text-3xl ml-8 font-extrabold mb-8 tracking-wide drop-shadow-md text-green-700 animate-pulse">
-                    Мәзір
+                    {{ $t('menus') }}
                 </h2>
                 <ul class="space-y-6">
                     <li>
@@ -45,7 +45,7 @@
                             :class="showSection === 'profile' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
                             class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
                         >
-                            Менің профилім
+                            {{ $t('profile') }}
                         </button>
                     </li>
                     <li>
@@ -54,7 +54,7 @@
                             :class="showSection === 'achievements' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
                             class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
                         >
-                            Менің жетістіктерім
+                            {{ $t('achievements') }}
                         </button>
                     </li>
                     <li>
@@ -63,7 +63,7 @@
                             :class="showSection === 'donations' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
                             class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
                         >
-                            Қайырымдылық тарихы
+                            {{ $t('history-charity') }}
                         </button>
                     </li>
                     <li>
@@ -72,7 +72,7 @@
                             :class="showSection === 'subscriptions' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
                             class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
                         >
-                            Менің жазылмаларым
+                            {{ $t('my-records') }}
                         </button>
                     </li>
                     <li>
@@ -81,7 +81,7 @@
                             :class="showSection === 'cards' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
                             class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
                         >
-                            Менің карталарым
+                            {{ $t('my-card') }}
                         </button>
                     </li>
                     <li>
@@ -89,7 +89,7 @@
                             @click="showSection = 'createGroup'"
                             class="w-full text-left hover:text-green-500 transition-all duration-300 ease-in-out hover:scale-105"
                         >
-                            Көмек керек топты құру
+                            {{ $t('help_create_group') }}
                         </button>
                     </li>
                     <li>
@@ -98,7 +98,7 @@
                             :class="showSection === 'groups' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
                             class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
                         >
-                            Көмек керек топ
+                            {{ $t('group-that-needs-help') }}
                         </button>
                     </li>
                     <li>
@@ -107,7 +107,7 @@
                             :class="showSection === 'chats' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
                             class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
                         >
-                            Хабарлама чаты
+                            {{ $t('message_chat') }}
                         </button>
                     </li>
                     <li>
@@ -115,7 +115,7 @@
                             @click="logout"
                             class="w-full text-left hover:text-red-500 transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95"
                         >
-                            Аккаунттан шығу
+                            {{ $t('logout') }}
                         </button>
                     </li>
                 </ul>
@@ -148,7 +148,8 @@
                             >
                                 📷
                             </div>
-                            <input type="file" @change="onPhotoChange" accept="image/*" class="hidden" ref="photoInput" />
+                            <input type="file" @change="onPhotoChange" accept="image/*" class="hidden"
+                                   ref="photoInput"/>
                         </div>
 
                         <!-- Name -->
@@ -156,18 +157,8 @@
                             <h2 class="text-4xl font-extrabold text-green-900 drop-shadow-md select-text">
                                 {{ user.name || 'Атыңыз' }}
                             </h2>
-                            <p class="text-green-700 mt-1 italic select-text">Жеке профиль ақпараттарыңыз</p>
+                            <p class="text-green-700 mt-1 italic select-text">{{ $t('personal_profile_info') }}</p>
                         </div>
-                    </div>
-
-                    <!-- Email info -->
-                    <div class="mb-8">
-                        <label
-                            class="flex items-center bg-green-50 border border-green-200 rounded-lg p-3 cursor-pointer hover:bg-green-100 transition"
-                        >
-                            <input type="checkbox" class="mr-3 w-5 h-5 text-green-600 focus:ring-green-400 rounded transition" />
-                            <span class="text-green-900 font-medium select-none">Жаңалықтарға жазылыңыз</span>
-                        </label>
                     </div>
 
                     <!-- Donation info -->
@@ -182,10 +173,11 @@
                             stroke="currentColor"
                             stroke-width="2"
                         >
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 1.343-3 3 0 1.35 1.58 3.5 3 4 1.42-.5 3-2.65 3-4 0-1.657-1.343-3-3-3z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 12v6" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M12 8c-1.657 0-3 1.343-3 3 0 1.35 1.58 3.5 3 4 1.42-.5 3-2.65 3-4 0-1.657-1.343-3-3-3z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 12v6"/>
                         </svg>
-                        <span>Сіздің үлесіңіз: <span class="ml-2 font-bold">{{ totalDonated }} ₸</span></span>
+                        <span>{{ $t('your_contribution') }}<span class="ml-2 font-bold">{{ totalDonated }} ₸</span></span>
                     </div>
 
                     <!-- Success message -->
@@ -202,7 +194,7 @@
                     <!-- Profile form -->
                     <form @submit.prevent="submitProfile" class="space-y-6">
                         <div>
-                            <label class="block text-green-900 text-lg font-semibold select-none">Есіміңіз</label>
+                            <label class="block text-green-900 text-lg font-semibold select-none">{{ $t('nazvanie') }}</label>
                             <input
                                 type="text"
                                 v-model="form.name"
@@ -212,7 +204,7 @@
                         </div>
 
                         <div>
-                            <label class="block text-green-900 text-lg font-semibold select-none">Тегіңіз</label>
+                            <label class="block text-green-900 text-lg font-semibold select-none">{{ $t('surname') }}</label>
                             <input
                                 type="text"
                                 v-model="form.surname"
@@ -222,18 +214,20 @@
                         </div>
 
                         <div>
-                            <label class="block text-green-900 text-lg font-semibold select-none">Жынысыңыз</label>
+                            <label class="block text-green-900 text-lg font-semibold select-none">{{ $t('gender') }}</label>
                             <select
                                 v-model="form.gender"
                                 class="mt-2 w-full border border-green-300 rounded-xl shadow-md p-4 focus:outline-none focus:ring-4 focus:ring-green-400 transition duration-300 text-green-900 font-medium"
                             >
-                                <option value="female">Әйел адам</option>
-                                <option value="male">Ер адам</option>
+                                <option value="female">{{$t('female')}}</option>
+                                <option value="male">{{ $t('male')}}</option>
                             </select>
                         </div>
 
                         <div>
-                            <label class="block text-green-900 text-lg font-semibold select-none">Телефон нөміріңіз</label>
+                            <label class="block text-green-900 text-lg font-semibold select-none">
+                                {{ $t('telephone') }}
+                            </label>
                             <input
                                 type="text"
                                 v-model="form.phone_number"
@@ -243,14 +237,31 @@
                         </div>
 
                         <div>
-                            <label class="block text-green-900 text-lg font-semibold select-none">Қалаңыз</label>
+                            <label class="block text-green-900 text-lg font-semibold select-none">{{ $t('city') }}</label>
                             <select
                                 v-model="form.city"
                                 class="mt-2 w-full border border-green-300 rounded-xl shadow-md p-4 focus:outline-none focus:ring-4 focus:ring-green-400 transition duration-300 text-green-900 font-medium"
                             >
                                 <option value="almaty">Алматы</option>
-                                <option value="astana">Астана</option>
+                                <option value="astana">Нұр-Сұлтан</option>
                                 <option value="shymkent">Шымкент</option>
+                                <option value="karaganda">Қарағанды</option>
+                                <option value="aktobe">Ақтөбе</option>
+                                <option value="pavlodar">Павлодар</option>
+                                <option value="uralsk">Орал (Батыс Қазақстан)</option>
+                                <option value="atyrau">Атырау</option>
+                                <option value="semey">Семей</option>
+                                <option value="kostanay">Қостанай</option>
+                                <option value="taraz">Тараз</option>
+                                <option value="petropavlovsk">Петропавл</option>
+                                <option value="ekibastuz">Екібастұз</option>
+                                <option value="kokshetau">Көкшетау</option>
+                                <option value="kzylorda">Қызылорда</option>
+                                <option value="zhanaozen">Жаңаөзен</option>
+                                <option value="temirtau">Теміртау</option>
+                                <option value="taldykorgan">Талдықорған</option>
+                                <option value="kapshagai">Қапшағай</option>
+
                             </select>
                         </div>
 
@@ -312,7 +323,8 @@
                             >
                                 <div class="text-5xl mb-3 text-green-600 animate-bounce">{{
                                         badge.icon
-                                    }}</div>
+                                    }}
+                                </div>
                                 <h4 class="font-semibold text-green-800">{{ badge.name }}</h4>
                                 <p class="text-sm text-green-600 mt-1">{{ badge.description }}</p>
                             </div>
@@ -329,7 +341,7 @@
                     <h2
                         class="text-3xl font-extrabold mb-8 text-green-700 drop-shadow-lg tracking-wide animate-fadeInDown"
                     >
-                        Қайырымдылық тарихы
+                        {{ $t('history-charity') }}
                     </h2>
 
                     <!-- Filter Options -->
@@ -360,42 +372,40 @@
                         class="bg-white rounded-xl shadow-xl overflow-hidden animate-fadeInUp"
                     >
                         <table class="w-full text-left">
-                            <thead class="bg-green-100 text-green-800 uppercase font-semibold tracking-wide">
-                            <tr>
-                                <th class="py-4 px-6 border-b border-green-200">Күні</th>
-                                <th class="py-4 px-6 border-b border-green-200">Жоба</th>
-                                <th class="py-4 px-6 border-b border-green-200">Түрі</th>
-                                <th class="py-4 px-6 border-b border-green-200">Сомасы</th>
-                                <th class="py-4 px-6 border-b border-green-200">Статус</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr
-                                v-for="donation in filteredDonations"
-                                :key="donation.id"
-                                class="border-b border-green-100 hover:bg-green-50 transition-colors duration-300"
-                            >
-                                <td class="py-3 px-6">{{ formatDate(donation.date) }}</td>
-                                <td class="py-3 px-6">{{ donation.project }}</td>
-                                <td class="py-3 px-6">
-            <span
-                class="px-3 py-1 rounded-full text-xs font-semibold"
-                :class="getDonationTypeClass(donation.type) + ' bg-green-100 text-green-700'"
-            >
-              {{ getDonationTypeName(donation.type) }}
-            </span>
-                                </td>
-                                <td class="py-3 px-6 font-semibold">{{ donation.amount }} {{ donation.currency }}</td>
-                                <td class="py-3 px-6">
-            <span
-                class="px-3 py-1 rounded-full text-xs font-semibold"
-                :class="getStatusClass(donation.status) + ' bg-green-100 text-green-700'"
-            >
-              {{ getStatusName(donation.status) }}
-            </span>
-                                </td>
-                            </tr>
-                            </tbody>
+                            <div>
+                                <h2 class="text-lg font-bold mb-4">Мои пожертвования</h2>
+<!--                                <ul>-->
+<!--                                    <li v-for="don in donations" :key="don.id">-->
+<!--                                        {{ don.amount }} KZT - {{ don.card_last_digits }} - {{ new Date(don.created_at).toLocaleString() }}-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+                                <table class="w-full text-sm text-left rtl:text-right text-black-100 dark:text-black">
+                                    <thead class="text-xs text-black-700 uppercase bg-gray-50 dark:bg-white-700 dark:text-black-400">
+                                        <tr>
+                                            <th class="px-6 py-3">ID</th>
+                                            <th class="px-6 py-3">User ID</th>
+                                            <th class="px-6 py-3">Amount</th>
+                                            <th class="px-6 py-3">Card</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="don in donations" :key="don.id">
+                                        <th scope="col" class="px-6 py-3">
+                                            {{don.id}}
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            {{don.user_id}}
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            {{ don.amount }} KZT
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            **** {{ don.card_last_digits }}
+                                        </th>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </table>
                         <div
                             v-if="!filteredDonations.length"
@@ -447,7 +457,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div v-if="!activeSubscriptions.length" class="text-green-400 text-center py-12 italic select-none animate-fadeIn">
+                        <div v-if="!activeSubscriptions.length"
+                             class="text-green-400 text-center py-12 italic select-none animate-fadeIn">
                             Белсенді жазылмалар жоқ
                         </div>
                     </div>
@@ -486,7 +497,7 @@
                             @click="saveNewsletterSettings"
                             class="mt-6 px-8 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-lg hover:bg-green-700 active:scale-95 transform transition"
                         >
-                            Сақтау
+                            {{ $t('save') }}
                         </button>
                     </div>
                 </section>
@@ -588,7 +599,9 @@
                                     {{ getCardType(card.number) }}
                                 </div>
                                 <div>
-                                    <p class="font-semibold text-green-800">**** **** **** {{ card.number.slice(-4) }}</p>
+                                    <p class="font-semibold text-green-800">**** **** **** {{
+                                            card.number.slice(-4)
+                                        }}</p>
                                     <p class="text-green-700 text-sm">{{ card.holderName }}</p>
                                     <p class="text-green-500 text-xs italic">Жарамдылық: {{ card.expiry }}</p>
                                 </div>
@@ -609,7 +622,8 @@
                                 </button>
                             </div>
                         </div>
-                        <div v-if="!savedCards.length" class="text-green-400 text-center py-12 italic select-none animate-fadeIn">
+                        <div v-if="!savedCards.length"
+                             class="text-green-400 text-center py-12 italic select-none animate-fadeIn">
                             Сақталған карталар жоқ
                         </div>
                     </div>
@@ -621,7 +635,7 @@
                     class="transition-opacity duration-500 ease-in-out"
                     :class="{ 'opacity-100': showSection === 'createGroup', 'opacity-0 absolute': showSection !== 'createGroup' }"
                 >
-                    <charity-group class="animate-fadeInScale" />
+                    <charity-group class="animate-fadeInScale"/>
                 </section>
 
 
@@ -631,7 +645,7 @@
                     class="transition-opacity duration-500 ease-in-out"
                     :class="{ 'opacity-100': showSection === 'chats', 'opacity-0 absolute': showSection !== 'chats' }"
                 >
-                    <chat class="animate-fadeInScale" />
+                    <chat class="animate-fadeInScale"/>
                 </section>
 
                 <!-- Helps Section -->
@@ -690,12 +704,13 @@
 
 <script>
 import axios from "axios";
-import Navbar from './design/Navbar.vue';
+import Navbar from '../components/Navbar.vue';
 import CharityGroup from './CharityGroup.vue';
 import Chat from './design/Chat.vue';
+
 export default {
     components: {
-        CharityGroup,Navbar,Chat
+        CharityGroup, Navbar, Chat
     },
     data() {
         return {
@@ -720,19 +735,51 @@ export default {
                 helpedProjects: 0,
                 volunteeredHours: 0,
                 badges: [
-                    { id: 1, name: 'Алғашқы көмек', description: 'Алғашқы қайырымдылық', icon: '🌟' },
-                    { id: 2, name: 'Мейірімді жүрек', description: '10+ қайырымдылық', icon: '❤️' },
-                    { id: 3, name: 'Қоғам серіктесі', description: 'Үнемі көмек беруші', icon: '🤝' },
-                    { id: 4, name: 'Волонтер', description: '50+ сағат еңбек', icon: '🙌' }
+                    {id: 1, name: 'Алғашқы көмек', description: 'Алғашқы қайырымдылық', icon: '🌟'},
+                    {id: 2, name: 'Мейірімді жүрек', description: '10+ қайырымдылық', icon: '❤️'},
+                    {id: 3, name: 'Қоғам серіктесі', description: 'Үнемі көмек беруші', icon: '🤝'},
+                    {id: 4, name: 'Волонтер', description: '50+ сағат еңбек', icon: '🙌'}
                 ]
             },
 
             // Donations data
             donations: [
-                { id: 1, date: '2024-12-01', project: 'Балаларға көмек', type: 'money', amount: 5000, currency: '₸', status: 'completed' },
-                { id: 2, date: '2024-11-15', project: 'Мектеп құрылысы', type: 'money', amount: 10000, currency: '₸', status: 'completed' },
-                { id: 3, date: '2024-11-01', project: 'Мүгедектерге қолдау', type: 'goods', amount: 3000, currency: '₸', status: 'pending' },
-                { id: 4, date: '2024-10-20', project: 'Қарттар үйі', type: 'time', amount: 8, currency: 'сағат', status: 'completed' }
+                {
+                    id: 1,
+                    date: '2024-12-01',
+                    project: 'Балаларға көмек',
+                    type: 'money',
+                    amount: 5000,
+                    currency: '₸',
+                    status: 'completed'
+                },
+                {
+                    id: 2,
+                    date: '2024-11-15',
+                    project: 'Мектеп құрылысы',
+                    type: 'money',
+                    amount: 10000,
+                    currency: '₸',
+                    status: 'completed'
+                },
+                {
+                    id: 3,
+                    date: '2024-11-01',
+                    project: 'Мүгедектерге қолдау',
+                    type: 'goods',
+                    amount: 3000,
+                    currency: '₸',
+                    status: 'pending'
+                },
+                {
+                    id: 4,
+                    date: '2024-10-20',
+                    project: 'Қарттар үйі',
+                    type: 'time',
+                    amount: 8,
+                    currency: 'сағат',
+                    status: 'completed'
+                }
             ],
             donationFilter: {
                 period: 'all',
@@ -786,8 +833,14 @@ export default {
                 expiry: '',
                 cvv: '',
                 holderName: ''
-            }
+            },
+            donationsPayment:[]
         };
+    },
+
+    async mounted() {
+        const res = await axios.get('/my-donations');
+        this.donations = res.data;
     },
 
     computed: {
@@ -815,8 +868,8 @@ export default {
         }
     },
 
-    async created(){
-        try{
+    async created() {
+        try {
             const response = await axios.get('/api/user');
             this.user = response.data;
             this.form = response.data;
@@ -857,6 +910,7 @@ export default {
                 console.error('Профильді сақтау қатесі:', e);
             }
         },
+
 
         onPhotoChange(e) {
             const file = e.target.files[0];
@@ -1022,7 +1076,7 @@ export default {
                     isDefault: this.savedCards.length === 0
                 });
 
-                this.newCard = { number: '', expiry: '', cvv: '', holderName: '' };
+                this.newCard = {number: '', expiry: '', cvv: '', holderName: ''};
                 this.showAddCardForm = false;
                 this.successMessage = 'Карта сәтті қосылды';
             } catch (error) {
@@ -1076,6 +1130,7 @@ export default {
         transform: translateY(0);
     }
 }
+
 @keyframes fade-in-up {
     0% {
         opacity: 0;
@@ -1086,9 +1141,11 @@ export default {
         transform: translateY(0);
     }
 }
+
 .animate-fade-in-down {
     animation: fade-in-down 0.3s ease forwards;
 }
+
 .animate-fade-in-up {
     animation: fade-in-up 0.3s ease forwards;
 }
@@ -1102,6 +1159,7 @@ export default {
         opacity: 0.7;
     }
 }
+
 .animate-pulse-slow {
     animation: pulse-slow 4s ease-in-out infinite;
 }
@@ -1111,6 +1169,7 @@ export default {
 .fade-leave-active {
     transition: opacity 0.5s ease;
 }
+
 .fade-enter-from,
 .fade-leave-to {
     opacity: 0;
@@ -1126,6 +1185,7 @@ export default {
         transform: translateY(0);
     }
 }
+
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -1136,6 +1196,7 @@ export default {
         transform: translateY(0);
     }
 }
+
 @keyframes pulseSlow {
     0%, 100% {
         opacity: 1;
@@ -1148,9 +1209,11 @@ export default {
 .animate-fadeInDown {
     animation: fadeInDown 0.6s ease forwards;
 }
+
 .animate-fadeInUp {
     animation: fadeInUp 0.6s ease forwards;
 }
+
 .animate-pulse-slow {
     animation: pulseSlow 3s ease-in-out infinite;
 }
@@ -1165,6 +1228,7 @@ export default {
         transform: translateY(0);
     }
 }
+
 @keyframes fadeInLeft {
     0% {
         opacity: 0;
@@ -1175,6 +1239,7 @@ export default {
         transform: translateX(0);
     }
 }
+
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -1185,6 +1250,7 @@ export default {
         transform: translateY(0);
     }
 }
+
 @keyframes popIn {
     0% {
         opacity: 0;
@@ -1199,12 +1265,15 @@ export default {
 .animate-fadeInDown {
     animation: fadeInDown 0.5s ease forwards;
 }
+
 .animate-fadeInLeft {
     animation: fadeInLeft 0.5s ease forwards;
 }
+
 .animate-fadeInUp {
     animation: fadeInUp 0.5s ease forwards;
 }
+
 .animate-popIn {
     animation: popIn 0.3s ease forwards;
 }
@@ -1218,6 +1287,7 @@ export default {
         opacity: 1;
     }
 }
+
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -1228,6 +1298,7 @@ export default {
         transform: translateY(0);
     }
 }
+
 @keyframes slideDown {
     0% {
         opacity: 0;
@@ -1238,6 +1309,7 @@ export default {
         transform: translateY(0);
     }
 }
+
 @keyframes fadeInScale {
     0% {
         opacity: 0;
@@ -1252,12 +1324,15 @@ export default {
 .animate-fadeIn {
     animation: fadeIn 0.6s ease forwards;
 }
+
 .animate-fadeInUp {
     animation: fadeInUp 0.5s ease forwards;
 }
+
 .animate-slideDown {
     animation: slideDown 0.5s ease forwards;
 }
+
 .animate-fadeInScale {
     animation: fadeInScale 0.6s ease forwards;
 }

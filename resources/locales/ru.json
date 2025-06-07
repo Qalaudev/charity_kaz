@@ -138,9 +138,12 @@
     "aid_amount": "Сумма помощи (₸)",
     "select_project": "Выбрать проект",
     "message_optional": "Сообщение (необязательно)",
-    "income_histories": "Истории доходов"
-
-
+    "income_histories": "Истории доходов",
+    "menus" : "Меню",
+    "help_create_group" : "Создание группы для помощи",
+    "message_chat": "Чат сообщений",
+    "personal_profile_info": "Ваша личная информация профиля",
+    "your_contribution": "Ваш вклад:"
 
 
 

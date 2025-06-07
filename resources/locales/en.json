@@ -140,7 +140,16 @@
     "aid_amount": "Aid Amount (₸)",
     "select_project": "Select Project",
     "message_optional": "Message (optional)",
-    "income_histories": "Income Histories"
+    "income_histories": "Income Histories",
+    "menus" : "Menu",
+    "help_create_group" : "Create a help group",
+    "message_chat": "Message chat",
+    "personal_profile_info": "Your personal profile information",
+    "your_contribution": "Your contribution:"
+
+
+
+
 
 
 }

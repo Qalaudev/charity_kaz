@@ -131,7 +131,6 @@ export default {
 
             this.cardNumber = value;
         },
-
         formatMonth() {
             let value = this.expiryMonth.replace(/\D/g, '');
             if (parseInt(value) > 12) {
@@ -142,25 +141,29 @@ export default {
             }
             this.expiryMonth = value;
         },
-
         formatYear() {
             this.expiryYear = this.expiryYear.replace(/\D/g, '');
         },
-
         async processPayment() {
             this.isProcessing = true;
 
             try {
                 await new Promise(resolve => setTimeout(resolve, 2000));
 
-                console.log('Payment data:', {
+                // console.log('Payment data:', {
+                //     amount: this.amount,
+                //     commission: this.commission,
+                //     cardNumber: this.cardNumber.replace(/\s/g, ''),
+                //     expiryMonth: this.expiryMonth,
+                //     expiryYear: this.expiryYear,
+                //     cvv: this.cvv
+                // });
+
+                await axios.post('/donations', {
                     amount: this.amount,
-                    commission: this.commission,
-                    cardNumber: this.cardNumber.replace(/\s/g, ''),
-                    expiryMonth: this.expiryMonth,
-                    expiryYear: this.expiryYear,
-                    cvv: this.cvv
+                    card_number: this.cardNumber.replace(/\s/g, '')
                 });
+
 
                 this.isSuccess = true;
                 this.resetForm();
@@ -176,14 +179,12 @@ export default {
                 this.isProcessing = false;
             }
         },
-
         cancelPayment() {
             if (confirm('Вы уверены, что хотите отменить платеж?')) {
                 this.resetForm();
                 this.$emit('cancel');
             }
         },
-
         resetForm() {
             this.cardNumber = '';
             this.expiryMonth = '';
