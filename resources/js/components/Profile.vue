@@ -36,7 +36,7 @@
   ]"
             >
                 <h2 class="text-3xl ml-8 font-extrabold mb-8 tracking-wide drop-shadow-md text-green-700 animate-pulse">
-                    {{ $t('menu')}}
+                    Мәзір
                 </h2>
                 <ul class="space-y-6">
                     <li>
@@ -45,7 +45,7 @@
                             :class="showSection === 'profile' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
                             class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
                         >
-                            {{ $t('myProfile')}}
+                            Менің профилім
                         </button>
                     </li>
                     <li>
@@ -54,7 +54,7 @@
                             :class="showSection === 'achievements' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
                             class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
                         >
-                            {{ $t('achievements')}}
+                            Менің жетістіктерім
                         </button>
                     </li>
                     <li>
@@ -63,7 +63,7 @@
                             :class="showSection === 'donations' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
                             class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
                         >
-                            {{ $t('history-charity') }}
+                            Қайырымдылық тарихы
                         </button>
                     </li>
                     <li>
@@ -72,7 +72,7 @@
                             :class="showSection === 'subscriptions' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
                             class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
                         >
-                            {{ $t('my-records')}}
+                            Менің жазылмаларым
                         </button>
                     </li>
                     <li>
@@ -81,7 +81,7 @@
                             :class="showSection === 'cards' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
                             class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
                         >
-                            {{ $t('my-card')}}
+                            Менің карталарым
                         </button>
                     </li>
                     <li>
@@ -89,7 +89,7 @@
                             @click="showSection = 'createGroup'"
                             class="w-full text-left hover:text-green-500 transition-all duration-300 ease-in-out hover:scale-105"
                         >
-                            {{ $t('group-that-needs-help') }}
+                            Көмек керек топты құру
                         </button>
                     </li>
                     <li>
@@ -98,7 +98,16 @@
                             :class="showSection === 'groups' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
                             class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
                         >
-                            {{$t('group-that-needs-help')}}
+                            Көмек керек топ
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            @click="chats"
+                            :class="showSection === 'chats' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
+                            class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
+                        >
+                            Хабарлама чаты
                         </button>
                     </li>
                     <li>
@@ -106,7 +115,7 @@
                             @click="logout"
                             class="w-full text-left hover:text-red-500 transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95"
                         >
-                            {{ $t('logout') }}
+                            Аккаунттан шығу
                         </button>
                     </li>
                 </ul>
@@ -147,7 +156,7 @@
                             <h2 class="text-4xl font-extrabold text-green-900 drop-shadow-md select-text">
                                 {{ user.name || 'Атыңыз' }}
                             </h2>
-                            <p class="text-green-700 mt-1 italic select-text">{{ $t('personal-info') }}</p>
+                            <p class="text-green-700 mt-1 italic select-text">Жеке профиль ақпараттарыңыз</p>
                         </div>
                     </div>
 
@@ -157,7 +166,7 @@
                             class="flex items-center bg-green-50 border border-green-200 rounded-lg p-3 cursor-pointer hover:bg-green-100 transition"
                         >
                             <input type="checkbox" class="mr-3 w-5 h-5 text-green-600 focus:ring-green-400 rounded transition" />
-                            <span class="text-green-900 font-medium select-none">{{ $t('subscribe-news') }}</span>
+                            <span class="text-green-900 font-medium select-none">Жаңалықтарға жазылыңыз</span>
                         </label>
                     </div>
 
@@ -176,7 +185,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 1.343-3 3 0 1.35 1.58 3.5 3 4 1.42-.5 3-2.65 3-4 0-1.657-1.343-3-3-3z" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 12v6" />
                         </svg>
-                        <span>{{ $t('contribution') }} <span class="ml-2 font-bold">{{ totalDonated }} ₸</span></span>
+                        <span>Сіздің үлесіңіз: <span class="ml-2 font-bold">{{ totalDonated }} ₸</span></span>
                     </div>
 
                     <!-- Success message -->
@@ -193,7 +202,7 @@
                     <!-- Profile form -->
                     <form @submit.prevent="submitProfile" class="space-y-6">
                         <div>
-                            <label class="block text-green-900 text-lg font-semibold select-none">{{ $t('nazvanie') }}</label>
+                            <label class="block text-green-900 text-lg font-semibold select-none">Есіміңіз</label>
                             <input
                                 type="text"
                                 v-model="form.name"
@@ -203,7 +212,7 @@
                         </div>
 
                         <div>
-                            <label class="block text-green-900 text-lg font-semibold select-none">{{ $t('surname') }}</label>
+                            <label class="block text-green-900 text-lg font-semibold select-none">Тегіңіз</label>
                             <input
                                 type="text"
                                 v-model="form.surname"
@@ -213,18 +222,18 @@
                         </div>
 
                         <div>
-                            <label class="block text-green-900 text-lg font-semibold select-none">{{ $t('gender') }}</label>
+                            <label class="block text-green-900 text-lg font-semibold select-none">Жынысыңыз</label>
                             <select
                                 v-model="form.gender"
                                 class="mt-2 w-full border border-green-300 rounded-xl shadow-md p-4 focus:outline-none focus:ring-4 focus:ring-green-400 transition duration-300 text-green-900 font-medium"
                             >
-                                <option value="female">{{ $t('female') }}</option>
-                                <option value="male">{{ $t('male') }}</option>
+                                <option value="female">Әйел адам</option>
+                                <option value="male">Ер адам</option>
                             </select>
                         </div>
 
                         <div>
-                            <label class="block text-green-900 text-lg font-semibold select-none">{{ $t('telephone') }}</label>
+                            <label class="block text-green-900 text-lg font-semibold select-none">Телефон нөміріңіз</label>
                             <input
                                 type="text"
                                 v-model="form.phone_number"
@@ -234,14 +243,14 @@
                         </div>
 
                         <div>
-                            <label class="block text-green-900 text-lg font-semibold select-none">{{ $t('city') }}</label>
+                            <label class="block text-green-900 text-lg font-semibold select-none">Қалаңыз</label>
                             <select
                                 v-model="form.city"
                                 class="mt-2 w-full border border-green-300 rounded-xl shadow-md p-4 focus:outline-none focus:ring-4 focus:ring-green-400 transition duration-300 text-green-900 font-medium"
                             >
-                                <option value="almaty">{{ $t('almaty') }}</option>
-                                <option value="astana">{{ $t('astana') }}</option>
-                                <option value="shymkent">{{ $t('shymkent') }}</option>
+                                <option value="almaty">Алматы</option>
+                                <option value="astana">Астана</option>
+                                <option value="shymkent">Шымкент</option>
                             </select>
                         </div>
 
@@ -249,7 +258,7 @@
                             type="submit"
                             class="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white py-4 rounded-xl shadow-lg font-extrabold text-lg transform hover:scale-105 transition-transform duration-300"
                         >
-                            {{ $t('save') }}
+                            Сақтау
                         </button>
                     </form>
                 </section>
@@ -263,7 +272,7 @@
                     <h2
                         class="text-3xl font-extrabold mb-8 text-green-700 drop-shadow-lg tracking-wide animate-fadeInDown"
                     >
-                        {{ $t('achievements') }}
+                        Менің жетістіктерім
                     </h2>
 
                     <!-- Achievement Stats -->
@@ -272,19 +281,19 @@
                             class="bg-gradient-to-tr from-green-100 to-green-300 text-green-900 p-8 rounded-xl text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-500 ease-in-out animate-pulse-slow"
                         >
                             <h3 class="text-4xl font-bold mb-2 drop-shadow-md">{{ achievements.totalDonations }}</h3>
-                            <p class="text-green-800 font-medium">{{ $t('all-replacements') }}</p>
+                            <p class="text-green-800 font-medium">Барлық ауыстырулар</p>
                         </div>
                         <div
                             class="bg-gradient-to-tr from-green-100 to-green-300 text-green-900 p-8 rounded-xl text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-500 ease-in-out animate-pulse-slow delay-150"
                         >
                             <h3 class="text-4xl font-bold mb-2 drop-shadow-md">{{ achievements.helpedProjects }}</h3>
-                            <p class="text-green-800 font-medium">{{ $t('project_helped') }}</p>
+                            <p class="text-green-800 font-medium">Көмектескен жобалар</p>
                         </div>
                         <div
                             class="bg-gradient-to-tr from-green-100 to-green-300 text-green-900 p-8 rounded-xl text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-500 ease-in-out animate-pulse-slow delay-300"
                         >
                             <h3 class="text-4xl font-bold mb-2 drop-shadow-md">{{ achievements.volunteeredHours }}</h3>
-                            <p class="text-green-800 font-medium">{{ $t('volunteer')  }}</p>
+                            <p class="text-green-800 font-medium">Волонтерлік сағаттар</p>
                         </div>
                     </div>
 
@@ -293,7 +302,7 @@
                         class="bg-white p-8 rounded-xl shadow-xl animate-fadeInUp"
                     >
                         <h3 class="text-xl font-semibold mb-6 text-green-700 border-b-2 border-green-300 pb-2">
-                            {{ $t('symptoms') }}
+                            Алған белгілеріңіз
                         </h3>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                             <div
@@ -320,7 +329,7 @@
                     <h2
                         class="text-3xl font-extrabold mb-8 text-green-700 drop-shadow-lg tracking-wide animate-fadeInDown"
                     >
-                        {{ $t('history-charity') }}
+                        Қайырымдылық тарихы
                     </h2>
 
                     <!-- Filter Options -->
@@ -331,18 +340,18 @@
                             v-model="donationFilter.period"
                             class="border border-green-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                         >
-                            <option value="all">{{ $t('all-time') }}</option>
-                            <option value="month">{{ $t('this-month') }}</option>
-                            <option value="year">{{ $t('this-year') }}</option>
+                            <option value="all">Барлық уақыт</option>
+                            <option value="month">Осы ай</option>
+                            <option value="year">Осы жыл</option>
                         </select>
                         <select
                             v-model="donationFilter.type"
                             class="border border-green-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                         >
-                            <option value="all">{{ $t('all-types') }}</option>
-                            <option value="money">{{ $t('cash')  }}</option>
-                            <option value="goods">{{ $t('сommodity') }}</option>
-                            <option value="time">{{ $t('times') }}</option>
+                            <option value="all">Барлық түрлері</option>
+                            <option value="money">Ақшалай</option>
+                            <option value="goods">Тауарлар</option>
+                            <option value="time">Уақыт</option>
                         </select>
                     </div>
 
@@ -392,7 +401,7 @@
                             v-if="!filteredDonations.length"
                             class="p-10 text-center text-green-400 font-semibold animate-fadeIn"
                         >
-                            {{ $t('not-found') }}
+                            Қайырымдылық тарихы табылмады
                         </div>
                     </div>
                 </section>
@@ -615,6 +624,16 @@
                     <charity-group class="animate-fadeInScale" />
                 </section>
 
+
+                <!-- Chat-->
+                <section
+                    v-show="showSection === 'chats'"
+                    class="transition-opacity duration-500 ease-in-out"
+                    :class="{ 'opacity-100': showSection === 'chats', 'opacity-0 absolute': showSection !== 'chats' }"
+                >
+                    <chat class="animate-fadeInScale" />
+                </section>
+
                 <!-- Helps Section -->
                 <section
                     v-show="showSection === 'groups'"
@@ -673,9 +692,10 @@
 import axios from "axios";
 import Navbar from './design/Navbar.vue';
 import CharityGroup from './CharityGroup.vue';
+import Chat from './design/Chat.vue';
 export default {
     components: {
-        CharityGroup,Navbar
+        CharityGroup,Navbar,Chat
     },
     data() {
         return {
@@ -797,7 +817,7 @@ export default {
 
     async created(){
         try{
-            const response = await axios.get('/user');
+            const response = await axios.get('/api/user');
             this.user = response.data;
             this.form = response.data;
             this.calculateTotalDonated();
@@ -892,6 +912,17 @@ export default {
             try {
                 const response = await axios.get('/group');
                 this.helps = response.data;
+            } catch (error) {
+                console.error("Деректерді алу кезінде қате:", error);
+            }
+        },
+
+
+        async chats() {
+            this.showSection = 'chats';
+            try {
+                // const response = await axios.get('/chats');
+                // this.helps = response.data;
             } catch (error) {
                 console.error("Деректерді алу кезінде қате:", error);
             }

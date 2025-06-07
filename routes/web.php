@@ -1,14 +1,18 @@
 <?php
 
+use App\Events\MessageSent;
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\auth\RegisterController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\getHelpController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileUserController;
 use App\Mail\VerificationCodeMail;
+use App\Models\Message;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
@@ -50,13 +54,41 @@ Route::post('/gethelp',[getHelpController::class,'getHelp'])->name('getHelp');
 Route::get('/get-helps',[getHelpController::class,'getOneHelp'])->name('getOneHelp');
 Route::get('/user',[ProfileUserController::class,'authUser'])->name('user.index');
 
-Route::post('/profile', [ProfileUserController::class, 'store'])->name('profileStore');
+Route::middleware('auth:sanctum')->post('/profile', [ProfileUserController::class, 'store'])->name('profileStore');
 
 Route::post('/contact', [ContactController::class, 'sendMail'])->name('sendMail');
 
 Route::post('/send-code', [RegisterController::class, 'sendVerificationCode']);
 Route::post('/verify-code', [RegisterController::class, 'verifyCode']);
 
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/users-all', [ChatController::class, 'getAllUsers']);
+    Route::get('/users-all-dddd', [ProfileUserController::class, 'authUser']);
+    Route::post('/message/{friendId}', [ChatController::class, 'sendMessage']);
+    Route::get('/message/{friendId}', [ChatController::class, 'getMessages']);
+});
+
+// Broadcast authorization routes
+Route::middleware(['auth:sanctum'])->group(function () {
+    Broadcast::channel('chat{userId}', function ($user, $userId) {
+        return (int) $user->id === (int) $userId;
+    });
+});
+
+Route::get('/test-event', function () {
+    $message = new Message([
+        'id' => 999,
+        'sender_id' => 1,
+        'receiver_id' => 2,
+        'message' => 'Тест хабарлама',
+        'created_at' => now(),
+    ]);
+
+    broadcast(new MessageSent($message));
+
+    return 'OK';
+});
 // Маршруты для интерфейса новостей
 Route::get('/news', function () {
     return view('news.index');
