@@ -18,6 +18,8 @@ import notFound from '../components/design/notFound.vue';
 import AboutUsSection from '../components/design/AboutUsSection.vue';
 import AboutUs from '../components/design/AboutUs.vue';
 import FAQ from '../components/design/FAQ.vue';
+import CharityPayment from "../components/CharityPayment.vue";
+import CharityPaymentForm from "../components/CharityPaymentForm.vue";
 
 const routes = [
     {
@@ -97,6 +99,14 @@ const routes = [
     {
         path: '/faq',
         component:FAQ
+    },
+    {
+        path: '/making-donation',
+        component: CharityPayment
+    },
+    {
+        path: '/making-donation-form',
+        component: CharityPaymentForm
     }
 ];
 

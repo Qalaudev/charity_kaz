@@ -80,6 +80,9 @@
                     <button @click="showModal = false" class="bg-green-600 text-white px-6 py-2 rounded-full shadow hover:bg-green-700 transition">
                         Жабу
                     </button>
+                    <button @click="charityDonation(true)" class="bg-blue-600 text-white px-6 py-2 rounded-full shadow hover:bg-green-700 transition">
+                        Қайырымдылық жасау
+                    </button>
                 </div>
             </div>
         </div>
@@ -404,6 +407,11 @@ export default {
                     messagesRef.scrollTop = messagesRef.scrollHeight;
                 });
             }, 500);
+        },
+        charityDonation(value){
+            if (value){
+                this.$router.push('/making-donation');
+            }
         }
 
     },
