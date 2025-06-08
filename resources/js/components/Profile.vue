@@ -112,6 +112,15 @@
                     </li>
                     <li>
                         <button
+                            @click="users"
+                            :class="showSection === 'users' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
+                            class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
+                        >
+                            Қолданушылар
+                        </button>
+                    </li>
+                    <li>
+                        <button
                             @click="logout"
                             class="w-full text-left hover:text-red-500 transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95"
                         >
@@ -160,6 +169,7 @@
                             <p class="text-green-700 mt-1 italic select-text">{{ $t('personal_profile_info') }}</p>
                         </div>
                     </div>
+
 
                     <!-- Donation info -->
                     <div
@@ -648,6 +658,15 @@
                     <chat class="animate-fadeInScale"/>
                 </section>
 
+                <!-- Users-->
+                <section
+                    v-show="showSection === 'users'"
+                    class="transition-opacity duration-500 ease-in-out"
+                    :class="{ 'opacity-100': showSection === 'users', 'opacity-0 absolute': showSection !== 'users' }"
+                >
+                    <users class="animate-fadeInScale" />
+                </section>
+
                 <!-- Helps Section -->
                 <section
                     v-show="showSection === 'groups'"
@@ -707,10 +726,10 @@ import axios from "axios";
 import Navbar from '../components/Navbar.vue';
 import CharityGroup from './CharityGroup.vue';
 import Chat from './design/Chat.vue';
-
+import Users from './design/Users.vue';
 export default {
     components: {
-        CharityGroup, Navbar, Chat
+        CharityGroup,Navbar,Chat,Users
     },
     data() {
         return {
@@ -911,7 +930,6 @@ export default {
             }
         },
 
-
         onPhotoChange(e) {
             const file = e.target.files[0];
             if (file) {
@@ -974,6 +992,15 @@ export default {
 
         async chats() {
             this.showSection = 'chats';
+            try {
+                // const response = await axios.get('/chats');
+                // this.helps = response.data;
+            } catch (error) {
+                console.error("Деректерді алу кезінде қате:", error);
+            }
+        },
+        async users() {
+            this.showSection = 'users';
             try {
                 // const response = await axios.get('/chats');
                 // this.helps = response.data;
@@ -1130,7 +1157,6 @@ export default {
         transform: translateY(0);
     }
 }
-
 @keyframes fade-in-up {
     0% {
         opacity: 0;
@@ -1141,11 +1167,9 @@ export default {
         transform: translateY(0);
     }
 }
-
 .animate-fade-in-down {
     animation: fade-in-down 0.3s ease forwards;
 }
-
 .animate-fade-in-up {
     animation: fade-in-up 0.3s ease forwards;
 }
@@ -1159,7 +1183,6 @@ export default {
         opacity: 0.7;
     }
 }
-
 .animate-pulse-slow {
     animation: pulse-slow 4s ease-in-out infinite;
 }
@@ -1169,7 +1192,6 @@ export default {
 .fade-leave-active {
     transition: opacity 0.5s ease;
 }
-
 .fade-enter-from,
 .fade-leave-to {
     opacity: 0;
@@ -1185,7 +1207,6 @@ export default {
         transform: translateY(0);
     }
 }
-
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -1196,7 +1217,6 @@ export default {
         transform: translateY(0);
     }
 }
-
 @keyframes pulseSlow {
     0%, 100% {
         opacity: 1;
@@ -1209,11 +1229,9 @@ export default {
 .animate-fadeInDown {
     animation: fadeInDown 0.6s ease forwards;
 }
-
 .animate-fadeInUp {
     animation: fadeInUp 0.6s ease forwards;
 }
-
 .animate-pulse-slow {
     animation: pulseSlow 3s ease-in-out infinite;
 }
@@ -1228,7 +1246,6 @@ export default {
         transform: translateY(0);
     }
 }
-
 @keyframes fadeInLeft {
     0% {
         opacity: 0;
@@ -1239,7 +1256,6 @@ export default {
         transform: translateX(0);
     }
 }
-
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -1250,7 +1266,6 @@ export default {
         transform: translateY(0);
     }
 }
-
 @keyframes popIn {
     0% {
         opacity: 0;
@@ -1265,15 +1280,12 @@ export default {
 .animate-fadeInDown {
     animation: fadeInDown 0.5s ease forwards;
 }
-
 .animate-fadeInLeft {
     animation: fadeInLeft 0.5s ease forwards;
 }
-
 .animate-fadeInUp {
     animation: fadeInUp 0.5s ease forwards;
 }
-
 .animate-popIn {
     animation: popIn 0.3s ease forwards;
 }
@@ -1287,7 +1299,6 @@ export default {
         opacity: 1;
     }
 }
-
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -1298,7 +1309,6 @@ export default {
         transform: translateY(0);
     }
 }
-
 @keyframes slideDown {
     0% {
         opacity: 0;
@@ -1309,7 +1319,6 @@ export default {
         transform: translateY(0);
     }
 }
-
 @keyframes fadeInScale {
     0% {
         opacity: 0;
@@ -1324,15 +1333,12 @@ export default {
 .animate-fadeIn {
     animation: fadeIn 0.6s ease forwards;
 }
-
 .animate-fadeInUp {
     animation: fadeInUp 0.5s ease forwards;
 }
-
 .animate-slideDown {
     animation: slideDown 0.5s ease forwards;
 }
-
 .animate-fadeInScale {
     animation: fadeInScale 0.6s ease forwards;
 }

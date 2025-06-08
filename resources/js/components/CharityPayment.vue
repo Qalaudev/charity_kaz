@@ -32,7 +32,7 @@
         <div v-if="selectedMethod === 'Kaspi'" class="flex justify-center">
             <a href="https://kaspi.kz" target="_blank" rel="noopener noreferrer">
                 <img
-                    src="/public/storage/kaspi/kaspi-qr.png"
+                    src="/storage/app/public/kaspi/kaspi-qr.png"
                     alt="Kaspi QR"
                     class="max-w-xs mx-auto hover:scale-105 transition duration-300"
                 />
