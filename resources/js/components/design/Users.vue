@@ -162,12 +162,14 @@ export default {
         },
 
         getUserInitials(name) {
+            if (!name || typeof name !== 'string') return '';
+
             return name
                 .split(' ')
                 .map(n => n[0])
                 .join('')
                 .substring(0, 2)
-                .toUpperCase()
+                .toUpperCase();
         },
 
         getRoleBadgeClass(role) {
