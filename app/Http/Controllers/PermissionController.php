@@ -12,7 +12,7 @@ class PermissionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:manage-permissions');
+        $this->middleware('permission:edit articles');
     }
 
     /**
