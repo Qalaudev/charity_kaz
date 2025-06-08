@@ -387,52 +387,29 @@
                     </div>
 
                     <!-- Donations Table -->
-                    <div
-                        class="bg-white rounded-xl shadow-xl overflow-hidden animate-fadeInUp"
-                    >
-                        <table class="w-full text-left">
-                            <div>
-                                <h2 class="text-lg font-bold mb-4">Мои пожертвования</h2>
-<!--                                <ul>-->
-<!--                                    <li v-for="don in donations" :key="don.id">-->
-<!--                                        {{ don.amount }} KZT - {{ don.card_last_digits }} - {{ new Date(don.created_at).toLocaleString() }}-->
-<!--                                    </li>-->
-<!--                                </ul>-->
-                                <table class="w-full text-sm text-left rtl:text-right text-black-100 dark:text-black">
-                                    <thead class="text-xs text-black-700 uppercase bg-gray-50 dark:bg-white-700 dark:text-black-400">
-                                        <tr>
-                                            <th class="px-6 py-3">ID</th>
-                                            <th class="px-6 py-3">User ID</th>
-                                            <th class="px-6 py-3">Amount</th>
-                                            <th class="px-6 py-3">Card</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr v-for="don in donations" :key="don.id">
-                                        <th scope="col" class="px-6 py-3">
-                                            {{don.id}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            {{don.user_id}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            {{ don.amount }} KZT
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            **** {{ don.card_last_digits }}
-                                        </th>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                    <div>
+                        <h2 class="text-lg font-bold mb-4">Мои пожертвования</h2>
+
+                        <table class="w-full text-sm text-left rtl:text-right text-black-100 dark:text-black">
+                            <thead class="text-xs text-black-700 uppercase bg-gray-50 dark:bg-white-700 dark:text-black-400">
+                            <tr>
+                                <th class="px-6 py-3">ID</th>
+                                <th class="px-6 py-3">User ID</th>
+                                <th class="px-6 py-3">Amount</th>
+                                <th class="px-6 py-3">Card</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="don in donations" :key="don.id">
+                                <td class="px-6 py-3">{{ don.id }}</td>
+                                <td class="px-6 py-3">{{ don.user_id }}</td>
+                                <td class="px-6 py-3">{{ don.amount }} KZT</td>
+                                <td class="px-6 py-3">**** {{ don.card_last_digits }}</td>
+                            </tr>
+                            </tbody>
                         </table>
-                        <div
-                            v-if="!filteredDonations.length"
-                            class="p-10 text-center text-green-400 font-semibold animate-fadeIn"
-                        >
-                            Қайырымдылық тарихы табылмады
-                        </div>
                     </div>
+
                 </section>
 
                 <!-- Subscriptions Section -->
