@@ -24,22 +24,24 @@ class UserSeeder extends Seeder
         $adminRole->givePermissionTo($editPermission);
         $editorRole->givePermissionTo($viewPermission);
 
-        // Создание пользователей
-        $admin = User::create([
-            'name' => 'Admin User',
-            'surname' => 'Admin',
-            'gender' => 'male',
-            'phone_number' => '123456789',
-            'city' => 'City A',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('adminpassword')
-        ]);
+        $admin = User::firstOrCreate(
+            ['email' => 'admin@example.com'], // поиск по email
+            [ // если не найден — создать
+                'name' => 'Admin User',
+                'surname' => 'Admin',
+                'gender' => 'male',
+                'phone_number' => '123456789',
+                'city' => 'City A',
+                'password' => Hash::make('adminpassword')
+            ]
+        );
 
         // Назначение роли админа
         $admin->assignRole('admin');
 
-        $user = User::create([
-            'name' => 'Normal User',
+        $user = User::firstOrCreate(
+            [ 'name' => 'Normal User'],
+            [
             'surname' => 'User',
             'gender' => 'female',
             'phone_number' => '987654321',
@@ -51,8 +53,9 @@ class UserSeeder extends Seeder
         // Назначение роли пользователя
         $user->assignRole('user');
 
-        $editor = User::create([
-            'name' => 'Editor User',
+        $editor = User::firstOrCreate(
+            [ 'name' => 'Editor User',],
+            [
             'surname' => 'Editor',
             'gender' => 'male',
             'phone_number' => '111222333',

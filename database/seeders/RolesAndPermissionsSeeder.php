@@ -23,6 +23,8 @@ class RolesAndPermissionsSeeder extends Seeder
             'edit articles',
             'delete articles',
             'publish articles',
+            'manage-permissions',
+            'manage-roles',
         ];
 
         // Создание пермишинов
