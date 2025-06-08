@@ -121,6 +121,15 @@
                     </li>
                     <li>
                         <button
+                            @click="roles"
+                            :class="showSection === 'roles' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
+                            class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
+                        >
+                            Roles
+                        </button>
+                    </li>
+                    <li>
+                        <button
                             @click="logout"
                             class="w-full text-left hover:text-red-500 transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95"
                         >
@@ -667,6 +676,15 @@
                     <users class="animate-fadeInScale" />
                 </section>
 
+               <!-- Roles-->
+                <section
+                    v-show="showSection === 'roles'"
+                    class="transition-opacity duration-500 ease-in-out"
+                    :class="{ 'opacity-100': showSection === 'roles', 'opacity-0 absolute': showSection !== 'roles' }"
+                >
+                    <roles class="animate-fadeInScale" />
+                </section>
+
                 <!-- Helps Section -->
                 <section
                     v-show="showSection === 'groups'"
@@ -727,9 +745,10 @@ import Navbar from '../components/Navbar.vue';
 import CharityGroup from './CharityGroup.vue';
 import Chat from './design/Chat.vue';
 import Users from './design/Users.vue';
+import Roles from './design/Roles.vue';
 export default {
     components: {
-        CharityGroup,Navbar,Chat,Users
+        CharityGroup,Navbar,Chat,Users,Roles
     },
     data() {
         return {
@@ -1001,6 +1020,15 @@ export default {
         },
         async users() {
             this.showSection = 'users';
+            try {
+                // const response = await axios.get('/chats');
+                // this.helps = response.data;
+            } catch (error) {
+                console.error("Деректерді алу кезінде қате:", error);
+            }
+        },
+        async roles() {
+            this.showSection = 'roles';
             try {
                 // const response = await axios.get('/chats');
                 // this.helps = response.data;

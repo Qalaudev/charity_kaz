@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Models\Permission;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+        // Привязка модели Permission к параметру {permission}
+        Route::model('permission', Permission::class);
+
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
@@ -36,9 +41,14 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+
+
         });
 
+
+
         Broadcast::routes(['middleware' => ['auth:sanctum']]);
+
 
     }
 }
