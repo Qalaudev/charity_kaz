@@ -9,8 +9,6 @@ export default {
             userMessage: '',
             messages: [],
             loading: false,
-            // apiKey: 'AIzaSyAALKQv-SwkcGekyP3BvWH4P-XLk49zSJ4',
-            apiKey:  import.meta.env.VITE_API_KEY,
             sessionId: null
         };
     },
@@ -18,57 +16,22 @@ export default {
         Navbar,
     },
     methods: {
-       /* async sendMessage() {
+        async sendMessage() {
             if (!this.userMessage.trim()) return;
 
+            // Қолданушы хабарламасын қосу
             const userMessageText = this.userMessage.trim();
             this.messages.push({ role: 'user', content: userMessageText });
             this.userMessage = '';
             this.loading = true;
 
             try {
-                let response;
+                // Laravel API арқылы хабарлама жіберу
+                const response = await axios.post('/api/chat', {
+                    message: userMessageText
+                });
 
-                if (!this.sessionId) {
-                    response = await axios.post(
-                        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${this.apiKey}`,
-                        {
-                            contents: [{
-                                role: "user",
-                                parts: [{ text: userMessageText }]
-                            }],
-                            generationConfig: {
-                                temperature: 0.7,
-                                maxOutputTokens: 1000,
-                            }
-                        },
-                        {
-                            headers: {
-                                'Content-Type': 'application/json'
-                            }
-                        }
-                    );
-                } else {
-                    response = await axios.post(
-                        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.0-pro:generateContent?key=${this.apiKey}`,
-                        {
-                            contents: [{
-                                role: "user",
-                                parts: [{ text: userMessageText }]
-                            }],
-                            generationConfig: {
-                                temperature: 0.7,
-                                maxOutputTokens: 1000,
-                            }
-                        },
-                        {
-                            headers: {
-                                'Content-Type': 'application/json'
-                            }
-                        }
-                    );
-                }
-
+                // Жауапты өңдеу
                 if (response.data &&
                     response.data.candidates &&
                     response.data.candidates.length > 0 &&
@@ -80,58 +43,14 @@ export default {
                     this.messages.push({ role: 'assistant', content: aiResponse });
 
                 } else {
-                    throw new Error('Некорректный формат ответа API');
+                    throw new Error('Жауап форматы дұрыс емес');
                 }
+
             } catch (error) {
-                console.error('Ошибка при отправке запроса:', error);
+                console.error('Қате:', error);
                 this.messages.push({
                     role: 'assistant',
-                    content: 'Извините, произошла ошибка при обработке вашего запроса. Пожалуйста, попробуйте еще раз позже.'
-                });
-            } finally {
-                this.loading = false;
-                this.$nextTick(() => {
-                    this.scrollToBottom();
-                });
-            }
-        },*/
-
-        async sendMessage() {
-            if (!this.userMessage.trim()) return;
-
-            const userMessageText = this.userMessage.trim();
-            this.messages.push({ role: 'user', content: userMessageText });
-            this.userMessage = '';
-            this.loading = true;
-
-            try {
-                const response = await axios.post(
-                    'https://api.openai.com/v1/chat/completions',
-                    {
-                        model: this.sessionId ? 'gpt-4' : 'gpt-3.5-turbo',
-                        messages: this.messages.map(msg => ({
-                            role: msg.role,
-                            content: msg.content
-                        })),
-                        temperature: 0.7,
-                        max_tokens: 1000
-                    },
-                    {
-                        headers: {
-                            'Authorization': `Bearer ${this.apiKey}`,
-                            'Content-Type': 'application/json'
-                        }
-                    }
-                );
-
-                const aiResponse = response.data.choices[0].message.content;
-
-                this.messages.push({ role: 'assistant', content: aiResponse });
-            } catch (error) {
-                console.error('Ошибка при отправке запроса:', error);
-                this.messages.push({
-                    role: 'assistant',
-                    content: 'Извините, произошла ошибка при обработке вашего запроса. Пожалуйста, попробуйте еще раз позже.'
+                    content: 'Кешіріңіз, сұранысты өңдеу кезінде қате орын алды. Кейінірек қайталап көріңіз.'
                 });
             } finally {
                 this.loading = false;

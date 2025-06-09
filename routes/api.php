@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GoogleChatController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ContactController;
@@ -25,6 +26,8 @@ Route::apiResource('products', ProductController::class);
 
 // Contact form submission route
 Route::post('/contact', [ContactController::class, 'store']);
+Route::post('/chat', [GoogleChatController::class, 'handleMessage']);
+
 // API маршруты для новостей
 Route::apiResource('news', NewsController::class);
 
