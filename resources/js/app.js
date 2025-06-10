@@ -1,5 +1,6 @@
 import './bootstrap';
 import { createApp } from 'vue';
+import { createPinia } from 'pinia'
 import App from './App.vue';
 import router from './router';
 
@@ -36,8 +37,10 @@ window.axios = axios;
 
 // 🧠 Vue қолданбасын бір рет бастау
 const app = createApp(App);
+const pinia = createPinia()
 app.use(router);
 app.use(i18n);
+app.use(pinia);
 app.component('chat-app', ChatApp);
 app.component('news-section', NewsSection);
 app.component('contact-form', ContactForm);

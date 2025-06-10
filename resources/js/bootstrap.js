@@ -40,6 +40,8 @@ window.Echo = new Echo({
     authorizer: (channel, options) => {
         return {
             authorize: (socketId, callback) => {
+
+                console.log(localStorage.getItem('token'))
                 axios.post('/broadcasting/auth', {
                     socket_id: socketId,
                     channel_name: channel.name

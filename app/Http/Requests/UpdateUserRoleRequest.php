@@ -25,8 +25,7 @@ class UpdateUserRoleRequest extends FormRequest
         return [
             'role' => [
                 'required',
-                'string',
-                Rule::in(['user', 'admin', 'moderator', 'editor'])
+                'string'
             ]
         ];
     }
@@ -38,9 +37,7 @@ class UpdateUserRoleRequest extends FormRequest
     {
         return [
             'role.required' => 'The role field is required.',
-            'role.string' => 'The role must be a string.',
-            'role.in' => 'The selected role is invalid. Valid roles are: user, admin, moderator, editor.'
-        ];
+            'role.string' => 'The role must be a string.'];
     }
 
     /**

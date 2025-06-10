@@ -84,7 +84,7 @@
                             {{ $t('my-card') }}
                         </button>
                     </li>
-                    <li>
+                    <li v-if = "isAdmin">
                         <button
                             @click="showSection = 'createGroup'"
                             class="w-full text-left hover:text-green-500 transition-all duration-300 ease-in-out hover:scale-105"
@@ -92,7 +92,7 @@
                             {{ $t('help_create_group') }}
                         </button>
                     </li>
-                    <li>
+                    <li v-if = "isAdmin">
                         <button
                             @click="listGroupHelp"
                             :class="showSection === 'groups' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
@@ -110,7 +110,7 @@
                             {{ $t('message_chat') }}
                         </button>
                     </li>
-                    <li>
+                    <li v-if = "isAdmin">
                         <button
                             @click="users"
                             :class="showSection === 'users' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
@@ -119,7 +119,7 @@
                             Қолданушылар
                         </button>
                     </li>
-                    <li>
+                    <li v-if = "isAdmin">
                         <button
                             @click="roles"
                             :class="showSection === 'roles' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
@@ -626,7 +626,7 @@
                 </section>
 
                 <!-- Create Groups Section -->
-                <section
+                <section v-if="isAdmin"
                     v-show="showSection === 'createGroup'"
                     class="transition-opacity duration-500 ease-in-out"
                     :class="{ 'opacity-100': showSection === 'createGroup', 'opacity-0 absolute': showSection !== 'createGroup' }"
@@ -646,6 +646,7 @@
 
                 <!-- Users-->
                 <section
+                    v-if="isAdmin"
                     v-show="showSection === 'users'"
                     class="transition-opacity duration-500 ease-in-out"
                     :class="{ 'opacity-100': showSection === 'users', 'opacity-0 absolute': showSection !== 'users' }"
@@ -655,6 +656,7 @@
 
                <!-- Roles-->
                 <section
+                    v-if="isAdmin"
                     v-show="showSection === 'roles'"
                     class="transition-opacity duration-500 ease-in-out"
                     :class="{ 'opacity-100': showSection === 'roles', 'opacity-0 absolute': showSection !== 'roles' }"
@@ -664,6 +666,7 @@
 
                 <!-- Helps Section -->
                 <section
+                    v-if="isAdmin"
                     v-show="showSection === 'groups'"
                     class="mt-6 transition-opacity duration-500 overflow-x-auto"
                     :class="{ 'opacity-100': showSection === 'groups', 'opacity-0 absolute': showSection !== 'groups' }"
@@ -741,6 +744,7 @@ export default {
             },
             successMessage: '',
             helps: [],
+            userRoles: [],
             user: {},
             totalDonated: 0,
 
@@ -853,41 +857,21 @@ export default {
         };
     },
 
-    async mounted() {
-        const res = await axios.get('/my-donations');
-        this.donations = res.data;
-    },
-
     computed: {
-        filteredDonations() {
-            let filtered = this.donations;
-
-            if (this.donationFilter.type !== 'all') {
-                filtered = filtered.filter(d => d.type === this.donationFilter.type);
-            }
-
-            if (this.donationFilter.period !== 'all') {
-                const now = new Date();
-                const filterDate = new Date();
-
-                if (this.donationFilter.period === 'month') {
-                    filterDate.setMonth(now.getMonth() - 1);
-                } else if (this.donationFilter.period === 'year') {
-                    filterDate.setFullYear(now.getFullYear() - 1);
-                }
-
-                filtered = filtered.filter(d => new Date(d.date) >= filterDate);
-            }
-
-            return filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+        isAdmin() {
+            return this.userRoles.includes('admin');
+        },
+        isPsychology() {
+            return this.userRoles.includes('psychologist');
         }
     },
 
     async created() {
         try {
             const response = await axios.get('/api/user');
-            this.user = response.data;
-            this.form = response.data;
+            this.user = response.data.user;
+            this.userRoles = response.data.roles;
+            this.form = response.data.user;
             this.calculateTotalDonated();
             this.loadAchievements();
         } catch (er) {
@@ -1033,42 +1017,6 @@ export default {
         formatDate(dateString) {
             const date = new Date(dateString);
             return date.toLocaleDateString('kk-KZ');
-        },
-
-        getDonationTypeClass(type) {
-            const classes = {
-                'money': 'bg-green-100 text-green-800',
-                'goods': 'bg-blue-100 text-blue-800',
-                'time': 'bg-purple-100 text-purple-800'
-            };
-            return classes[type] || 'bg-gray-100 text-gray-800';
-        },
-
-        getDonationTypeName(type) {
-            const names = {
-                'money': 'Ақшалай',
-                'goods': 'Тауарлар',
-                'time': 'Уақыт'
-            };
-            return names[type] || type;
-        },
-
-        getStatusClass(status) {
-            const classes = {
-                'completed': 'bg-green-100 text-green-800',
-                'pending': 'bg-yellow-100 text-yellow-800',
-                'failed': 'bg-red-100 text-red-800'
-            };
-            return classes[status] || 'bg-gray-100 text-gray-800';
-        },
-
-        getStatusName(status) {
-            const names = {
-                'completed': 'Аяқталды',
-                'pending': 'Күтілуде',
-                'failed': 'Сәтсіз'
-            };
-            return names[status] || status;
         },
 
         // Subscription methods

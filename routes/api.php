@@ -40,5 +40,8 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    return response()->json([
+        'user' => $request->user()->load('roles'), // eager load roles
+        'roles' => $request->user()->getRoleNames(), // ['admin', 'pchilogy', 'user'] т.б.
+    ]);
 });

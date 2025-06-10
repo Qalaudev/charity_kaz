@@ -76,11 +76,11 @@
                                         :disabled="updatingUsers.includes(user.id)"
                                         class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md disabled:bg-gray-100 disabled:cursor-not-allowed"
                                     >
-                                        <option value="user">User</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="moderator">Moderator</option>
-                                        <option value="editor">Editor</option>
+                                        <option v-for="role in roles" :key="role.id" :value="role.name">
+                                            {{ role.name.charAt(0).toUpperCase() + role.name.slice(1) }}
+                                        </option>
                                     </select>
+
                                 </div>
 
                                 <div v-if="updatingUsers.includes(user.id)" class="flex-shrink-0">
@@ -112,6 +112,8 @@ export default {
     data() {
         return {
             users: [],
+            roles: [],
+            permissions: [],
             loading: false,
             error: '',
             successMessage: '',
@@ -134,6 +136,18 @@ export default {
                 .finally(() => {
                     this.loading = false
                 })
+        },
+
+        async fetchData() {
+            this.loading = true
+            try {
+                const rolesResponse = await axios.get('/api/roles')
+                this.roles = rolesResponse.data.data
+            } catch (error) {
+                console.error('Fetch error:', error)
+            } finally {
+                this.loading = false
+            }
         },
 
         updateUserRole(user) {
@@ -183,7 +197,8 @@ export default {
         }
     },
     mounted() {
-        this.fetchUsers()
+        this.fetchUsers();
+        this.fetchData();
     }
 }
 </script>

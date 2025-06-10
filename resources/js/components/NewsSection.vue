@@ -1,9 +1,9 @@
 <template>
     <section class="py-16 px-4 md:px-8 bg-white">
         <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-center mb-10">
+            <div  class="flex justify-between items-center mb-10">
                 <h2 class="text-4xl font-extrabold text-green-600 animate-fade-in-down">{{ $t('news') }}</h2>
-                <div class="flex gap-2 items-center">
+                <div v-if="isAdmin || isPsychology "  class="flex gap-2 items-center">
                     <!-- Add News Button -->
                     <button
                         @click="openModal"
@@ -198,6 +198,7 @@
 
 <script>
 import axios from 'axios';
+import { useUserStore } from '../stores/user.js';
 
 export default {
     name: 'NewsSection',
@@ -205,6 +206,7 @@ export default {
         return {
             showModalButton:false,
             news: [],
+            userRoles: [],
             showModal: false,
             loading: false,
             user: null, // Данные пользователя
@@ -219,20 +221,22 @@ export default {
                 content: '',
                 image: null
             },
-            errors: {}
+            errors: {},
+            userStore: useUserStore()
         };
     },
     created() {
         this.fetchNews();
     },
     mounted() {
-      //  this.getUserData();
+        this.getUserData();
     },
     methods: {
         async getUserData() {
             try {
                 const response = await axios.get('/api/user'); // Запрос к API для получения данных о пользователе
-                this.user = response.data; // Данные пользователя
+                this.user = response.data.user;
+                this.userRoles = response.data.roles;
             } catch (error) {
                 console.error('Ошибка при получении данных пользователя:', error);
             } finally {
@@ -371,6 +375,14 @@ export default {
                 month: 'short',
                 year: 'numeric'
             });
+        }
+    },
+    computed: {
+        isAdmin() {
+            return this.userRoles.includes('admin');
+        },
+        isPsychology() {
+            return this.userRoles.includes('psychologist');
         }
     }
 };
