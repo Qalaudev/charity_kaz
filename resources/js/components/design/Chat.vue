@@ -146,7 +146,7 @@ export default {
         async getUserData() {
             try {
                 const response = await axios.get('/api/user'); // Запрос к API для получения данных о пользователе
-                this.currentUser = response.data; // Данные пользователя
+                this.currentUser = response.data.user; // Данные пользователя
             } catch (error) {
                 console.error('Ошибка при получении данных пользователя:', error);
             } finally {

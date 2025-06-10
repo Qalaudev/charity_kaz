@@ -48,7 +48,7 @@
                             {{ $t('profile') }}
                         </button>
                     </li>
-                    <li>
+                    <li v-if="isUser">
                         <button
                             @click="showSection = 'achievements'"
                             :class="showSection === 'achievements' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
@@ -57,7 +57,7 @@
                             {{ $t('achievements') }}
                         </button>
                     </li>
-                    <li>
+                    <li v-if="isUser">
                         <button
                             @click="showSection = 'donations'"
                             :class="showSection === 'donations' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
@@ -66,7 +66,7 @@
                             {{ $t('history-charity') }}
                         </button>
                     </li>
-                    <li>
+                    <li v-if="isUser">
                         <button
                             @click="showSection = 'subscriptions'"
                             :class="showSection === 'subscriptions' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
@@ -75,7 +75,7 @@
                             {{ $t('my-records') }}
                         </button>
                     </li>
-                    <li>
+                    <li v-if="isUser">
                         <button
                             @click="showSection = 'cards'"
                             :class="showSection === 'cards' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
@@ -101,7 +101,7 @@
                             {{ $t('group-that-needs-help') }}
                         </button>
                     </li>
-                    <li>
+                    <li v-if="isUser || isPsychology" >
                         <button
                             @click="chats"
                             :class="showSection === 'chats' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
@@ -863,6 +863,9 @@ export default {
         },
         isPsychology() {
             return this.userRoles.includes('psychologist');
+        },
+        isUser() {
+            return this.userRoles.includes('user');
         }
     },
 
