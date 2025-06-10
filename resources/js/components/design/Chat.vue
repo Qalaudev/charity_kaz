@@ -76,6 +76,7 @@ export default {
     watch: {
         selectedUser(newVal) {
             this.selectedUserCopy = newVal
+            this.messages = [];
             this.messagesAll();
             // this.channel();
         }
