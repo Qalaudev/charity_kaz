@@ -112,6 +112,7 @@ export default {
 
         messagesAll()
         {
+            this.messages="";
             let friendID =this.selectedUser?.id;
             console.log(friendID)
             axios.get(`/message/${friendID}`).then((response)=>{
