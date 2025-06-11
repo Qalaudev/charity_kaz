@@ -143,7 +143,9 @@
     "help_create_group" : "Создание группы для помощи",
     "message_chat": "Чат сообщений",
     "personal_profile_info": "Ваша личная информация профиля",
-    "your_contribution": "Ваш вклад:"
+    "your_contribution": "Ваш вклад:",
+    "support_us": "Поддержим",
+    "other_method": "Другой метод"
 
 
 

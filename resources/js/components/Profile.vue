@@ -402,7 +402,7 @@
                             <tbody>
                             <tr v-for="don in donations" :key="don.id">
                                 <td class="px-6 py-3">{{ don.id }}</td>
-                                <td class="px-6 py-3">{{ don.user_id }}</td>
+                                <td class="px-6 py-3">{{ don.payment_status }}</td>
                                 <td class="px-6 py-3">{{ don.amount }} KZT</td>
                                 <td class="px-6 py-3">**** {{ don.card_last_digits }}</td>
                             </tr>

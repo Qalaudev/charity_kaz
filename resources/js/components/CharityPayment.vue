@@ -2,7 +2,7 @@
     <Navbar></Navbar>
     <div class="p-4 max-w-7xl mx-auto">
         <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold">Қолдау Көрсетейік</h1>
+            <h1 class="text-3xl font-bold">{{ $t('support_us') }}</h1>
             <hr class="my-4 border-t-2 border-gray-300" />
 
             <div class="flex justify-center space-x-6">
@@ -24,13 +24,13 @@
                     @click="selectedMethod = 'Other'"
                     class="px-6 py-2 rounded-md font-semibold"
                 >
-                    Басқа әдіс
+                    {{ $t('other_method') }}
                 </button>
             </div>
         </div>
 
         <div v-if="selectedMethod === 'Kaspi'" class="flex justify-center">
-            <a href="https://kaspi.kz" target="_blank" rel="noopener noreferrer">
+            <a href="https://qr.kaspi.kz/1149833385352419322050630802373033036147" target="_blank" rel="noopener noreferrer">
                 <img
                     src="/storage/app/public/kaspi/kaspi-qr.png"
                     alt="Kaspi QR"
@@ -97,9 +97,18 @@ export default {
         setAmount(val) {
             this.amount = val;
         },
-        paymentCharity() {
-            const query = new URLSearchParams({ amount: this.amount }).toString();
-            window.open(`/making-donation-form?${query}`, '_blank');
+        async paymentCharity() {
+            const usdAmount = (this.amount/500).toFixed(2);
+            const response = await axios.post('/paypal', {
+                amount: usdAmount
+            });
+
+            if (response.data.links) {
+                const approvalUrl = response.data.links.find(link => link.rel === 'approve');
+                if (approvalUrl) {
+                    window.location.href = approvalUrl.href;
+                }
+            }
         }
     }
 }

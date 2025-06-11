@@ -144,9 +144,10 @@
     "help_create_group" : "Көмек керек топты құру",
     "message_chat": "Хабарлама чаты",
     "personal_profile_info": "Жеке профиль ақпараттарыңыз",
-    "your_contribution": "Сіздің үлесіңіз:"
+    "your_contribution": "Сіздің үлесіңіз:",
 
-
+    "support_us": "Қолдау көрсетейік",
+    "other_method": "Басқа әдіс"
 
 
 }
