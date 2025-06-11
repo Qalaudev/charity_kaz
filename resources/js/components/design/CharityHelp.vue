@@ -2,7 +2,7 @@
     <div class="charity-help min-h-screen bg-gradient-to-br from-green-50 via-green-100 to-green-200">
 
         <!-- Navbar placeholder -->
-        <navbar/>
+        <Navbar></Navbar>
 
         <!-- Header Section -->
         <div class="bg-white shadow-md">
@@ -123,116 +123,99 @@
             </div>
 
             <!-- Donation Form -->
-            <div class="bg-white rounded-3xl shadow-2xl p-10 mb-16 max-w-3xl mx-auto animate-fadeInUp">
-                <h2 class="text-4xl font-extrabold text-green-900 mb-10 text-center drop-shadow-md">
-                    {{ $t('charity_help') }}
-                </h2>
-                <form @submit.prevent="submitDonation">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                        <div>
-                            <label class="block text-green-700 font-semibold mb-2">{{ $t('nazvanie')}}</label>
-                            <input
-                                v-model="donationForm.name"
-                                type="text"
-                                required
-                                class="w-full px-5 py-4 border border-green-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-green-400 focus:border-transparent transition"
-                            />
-                        </div>
-                        <div>
-                            <label class="block text-green-700 font-semibold mb-2">{{ $t('email') }}</label>
-                            <input
-                                v-model="donationForm.email"
-                                type="email"
-                                required
-                                class="w-full px-5 py-4 border border-green-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-green-400 focus:border-transparent transition"
-                            />
-                        </div>
-                    </div>
+<!--            <div class="bg-white rounded-3xl shadow-2xl p-10 mb-16 max-w-3xl mx-auto animate-fadeInUp">-->
+<!--                <h2 class="text-4xl font-extrabold text-green-900 mb-10 text-center drop-shadow-md">-->
+<!--                    {{ $t('charity_help') }}-->
+<!--                </h2>-->
+<!--                <form @submit.prevent="submitDonation">-->
+<!--                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">-->
+<!--                        <div>-->
+<!--                            <label class="block text-green-700 font-semibold mb-2">{{ $t('nazvanie')}}</label>-->
+<!--                            <input-->
+<!--                                v-model="donationForm.name"-->
+<!--                                type="text"-->
+<!--                                required-->
+<!--                                class="w-full px-5 py-4 border border-green-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-green-400 focus:border-transparent transition"-->
+<!--                            />-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <label class="block text-green-700 font-semibold mb-2">{{ $t('email') }}</label>-->
+<!--                            <input-->
+<!--                                v-model="donationForm.email"-->
+<!--                                type="email"-->
+<!--                                required-->
+<!--                                class="w-full px-5 py-4 border border-green-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-green-400 focus:border-transparent transition"-->
+<!--                            />-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <div class="mb-8">
-                        <label class="block text-green-700 font-semibold mb-3">{{ $t('aid_amount') }}</label>
-                        <div class="grid grid-cols-3 md:grid-cols-6 gap-3 mb-6">
-                            <button
-                                v-for="amount in presetAmounts"
-                                :key="amount"
-                                type="button"
-                                @click="donationForm.amount = amount"
-                                :class="donationForm.amount === amount
-                  ? 'bg-green-600 text-white shadow-lg'
-                  : 'bg-green-100 text-green-700 hover:bg-green-200'"
-                                class="py-3 px-5 rounded-xl font-semibold transition"
-                            >
-                                {{ amount.toLocaleString() }}
-                            </button>
-                        </div>
-                        <input
-                            v-model.number="donationForm.amount"
-                            type="number"
-                            min="100"
-                            required
-                            placeholder="Басқа сома енгізіңіз"
-                            class="w-full px-5 py-4 border border-green-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-green-400 focus:border-transparent transition"
-                        />
-                    </div>
+<!--                    <div class="mb-8">-->
+<!--                        <label class="block text-green-700 font-semibold mb-3">{{ $t('aid_amount') }}</label>-->
+<!--                        <div class="grid grid-cols-3 md:grid-cols-6 gap-3 mb-6">-->
+<!--                            <button-->
+<!--                                v-for="amount in presetAmounts"-->
+<!--                                :key="amount"-->
+<!--                                type="button"-->
+<!--                                @click="donationForm.amount = amount"-->
+<!--                                :class="donationForm.amount === amount-->
+<!--                  ? 'bg-green-600 text-white shadow-lg'-->
+<!--                  : 'bg-green-100 text-green-700 hover:bg-green-200'"-->
+<!--                                class="py-3 px-5 rounded-xl font-semibold transition"-->
+<!--                            >-->
+<!--                                {{ amount.toLocaleString() }}-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                        <input-->
+<!--                            v-model.number="donationForm.amount"-->
+<!--                            type="number"-->
+<!--                            min="100"-->
+<!--                            required-->
+<!--                            placeholder="Басқа сома енгізіңіз"-->
+<!--                            class="w-full px-5 py-4 border border-green-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-green-400 focus:border-transparent transition"-->
+<!--                        />-->
+<!--                    </div>-->
 
-                    <div class="mb-8">
-                        <label class="block text-green-700 font-semibold mb-3">{{ $t('select_project') }}</label>
-                        <select
-                            v-model="donationForm.projectId"
-                            class="w-full px-5 py-4 border border-green-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-green-400 focus:border-transparent transition"
-                        >
-                            <option value="">Жалпы қор</option>
-                            <option v-for="project in activeProjects" :key="project.id" :value="project.id">
-                                {{ project.title }}
-                            </option>
-                        </select>
-                    </div>
+<!--                    <div class="mb-8">-->
+<!--                        <label class="block text-green-700 font-semibold mb-3">{{ $t('select_project') }}</label>-->
+<!--                        <select-->
+<!--                            v-model="donationForm.projectId"-->
+<!--                            class="w-full px-5 py-4 border border-green-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-green-400 focus:border-transparent transition"-->
+<!--                        >-->
+<!--                            <option value="">Жалпы қор</option>-->
+<!--                            <option v-for="project in activeProjects" :key="project.id" :value="project.id">-->
+<!--                                {{ project.title }}-->
+<!--                            </option>-->
+<!--                        </select>-->
+<!--                    </div>-->
 
-                    <div class="mb-8">
-                        <label class="block text-green-700 font-semibold mb-3">{{ $t('message_optional') }}</label>
-                        <textarea
-                            v-model="donationForm.message"
-                            rows="5"
-                            placeholder="Сіздің хабарламаңыз немесе тілектеріңіз"
-                            class="w-full px-5 py-4 border border-green-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-green-400 focus:border-transparent transition resize-none"
-                        ></textarea>
-                    </div>
+<!--                    <div class="mb-8">-->
+<!--                        <label class="block text-green-700 font-semibold mb-3">{{ $t('message_optional') }}</label>-->
+<!--                        <textarea-->
+<!--                            v-model="donationForm.message"-->
+<!--                            rows="5"-->
+<!--                            placeholder="Сіздің хабарламаңыз немесе тілектеріңіз"-->
+<!--                            class="w-full px-5 py-4 border border-green-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-green-400 focus:border-transparent transition resize-none"-->
+<!--                        ></textarea>-->
+<!--                    </div>-->
 
-                    <button
-                        type="submit"
-                        :disabled="isSubmitting"
-                        class="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-5 rounded-2xl text-xl font-extrabold tracking-wide shadow-lg hover:from-green-700 hover:to-green-800 hover:shadow-2xl transition disabled:opacity-70 disabled:cursor-not-allowed"
-                    >
-                        {{ isSubmitting ? 'Жіберілуде...' : 'Жіберу' }}
-                    </button>
-                </form>
-            </div>
+<!--                    <button-->
+<!--                        type="submit"-->
+<!--                        :disabled="isSubmitting"-->
+<!--                        class="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-5 rounded-2xl text-xl font-extrabold tracking-wide shadow-lg hover:from-green-700 hover:to-green-800 hover:shadow-2xl transition disabled:opacity-70 disabled:cursor-not-allowed"-->
+<!--                    >-->
+<!--                        {{ isSubmitting ? 'Жіберілуде...' : 'Жіберу' }}-->
+<!--                    </button>-->
+<!--                </form>-->
+<!--            </div>-->
 
             <!-- Success Stories -->
-            <div>
-                <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">{{ $t('income_histories') }}</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div v-for="story in successStories" :key="story.id" class="bg-white rounded-xl p-6 shadow-lg">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                                {{ story.name.charAt(0) }}
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="font-semibold text-gray-900">{{ story.name }}</h4>
-                                <p class="text-sm text-gray-500">{{ story.date }}</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-700 italic">"{{ story.story }}"</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </template>
 
 
 <script>
-import Navbar from './Navbar.vue';
+import Navbar from '../Navbar.vue';
 export default {
     name: 'CharityHelp',
     components: {
@@ -252,28 +235,29 @@ export default {
             activeProjects: [
                 {
                     id: 1,
-                    title: 'Балаларға көмек',
-                    description: 'Қиын жағдайдағы балаларға білім беру және медициналық көмек көрсету',
+                    title: 'Әлеуметтік аз қамтылған отбасылар',
+                    description: 'Әлеуметтік аз қамтылған отбасылардың балаларына білім беру мен медициналық көмек көрсету',
                     raised: 180000,
                     goal: 500000,
                     gradient: 'from-pink-400 to-red-500'
                 },
                 {
                     id: 2,
-                    title: 'Кәрілерге қолдау',
-                    description: 'Жалғыз кәрілерге күнделікті көмек пен медициналық қызмет көрсету',
+                    title: 'Жетім және Ата-анасының қамқорлығынсыз қалған балалар',
+                    description: 'Жетім және қамқорлығынсыз қалған балалардың өмір сүру сапасын жақсарту және қолдау көрсету',
                     raised: 320000,
                     goal: 600000,
                     gradient: 'from-purple-400 to-pink-500'
                 },
                 {
                     id: 3,
-                    title: 'Білім беру бағдарламасы',
-                    description: 'Кедей отбасылардың балаларына сапалы білім беруге мүмкіндік жасау',
+                    title: 'Мүмкіндігі шектеулі балалар',
+                    description: 'Мүмкіндігі шектеулі балаларға сапалы білім мен арнайы күтім көрсетуге қолдау білдіру',
                     raised: 450000,
                     goal: 800000,
                     gradient: 'from-blue-400 to-purple-500'
                 }
+
             ],
             successStories: [
                 {
@@ -319,7 +303,7 @@ export default {
         donateToProject(projectId) {
             this.donationForm.projectId = projectId;
             // Scroll to donation form
-            document.querySelector('form').scrollIntoView({ behavior: 'smooth' });
+            window.location.href = `/making-donation`;
         }
     }
 }
