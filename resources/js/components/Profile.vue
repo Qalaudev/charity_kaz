@@ -143,6 +143,16 @@
 
                     <li v-if = "isAdmin">
                         <button
+                            @click="volunteer"
+                            :class="showSection === 'volunteer' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
+                            class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
+                        >
+                            Еріктілер
+                        </button>
+                    </li>
+
+                    <li v-if = "isAdmin">
+                        <button
                             @click="roles"
                             :class="showSection === 'roles' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
                             class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
@@ -178,6 +188,8 @@
                             @click="triggerFileInput"
                             title="Суретті өзгерту"
                         >
+                            <input type="file" @change="onPhotoChange" accept="image/*" class="hidden"
+                                   ref="photoInput"/>
                             <img
                                 :src="user.photo_url || photoPreview"
                                 alt="User Avatar"
@@ -188,8 +200,7 @@
                             >
                                 📷
                             </div>
-                            <input type="file" @change="onPhotoChange" accept="image/*" class="hidden"
-                                   ref="photoInput"/>
+
                         </div>
 
                         <!-- Name -->
@@ -686,6 +697,16 @@
                     <site-message class="animate-fadeInScale" />
                 </section>
 
+                <!-- Volunteer-->
+                <section
+                    v-if="isAdmin"
+                    v-show="showSection === 'volunteer'"
+                    class="mt-6 transition-opacity duration-500 overflow-x-auto"
+                    :class="{ 'opacity-100': showSection === 'volunteer', 'opacity-0 absolute': showSection !== 'volunteer' }"
+                >
+                    <site-message class="animate-fadeInScale" />
+                </section>
+
                <!-- Roles-->
                 <section
                     v-if="isAdmin"
@@ -851,10 +872,11 @@ import CharityGroup from './CharityGroup.vue';
 import Chat from './design/Chat.vue';
 import Users from './design/Users.vue';
 import SiteMessage from './design/SiteMessage.vue';
+import Volunteer from './design/Volunteer.vue';
 import Roles from './design/Roles.vue';
 export default {
     components: {
-        CharityGroup,Navbar,Chat,Users,Roles,SiteMessage
+        CharityGroup,Navbar,Chat,Users,Roles,SiteMessage,Volunteer
     },
     data() {
         return {
@@ -1146,6 +1168,9 @@ export default {
         },
         async siteMessage() {
             this.showSection = 'siteMessage';
+        },
+        async volunteer() {
+            this.showSection = 'volunteer';
         },
         async roles() {
             this.showSection = 'roles';

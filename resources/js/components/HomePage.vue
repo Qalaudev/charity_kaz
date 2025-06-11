@@ -6,7 +6,7 @@
             <div class="sm:w-1/2 p-6 animate-fade-in">
                 <div class="text-center">
                     <video
-                        src="/storage/app/public/mainContent/charity-video.mp4"
+                        src="/storage/app/public/mainContent/charity.mp4"
                         controls
                         autoplay
                         muted
