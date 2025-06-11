@@ -53,7 +53,12 @@ Route::post('/create/group',[GroupController::class,'store'])->name('store.group
 Route::get('/groups/{id}',[GroupController::class,'show'])->name('group.show');
 
 Route::post('/gethelp',[getHelpController::class,'getHelp'])->name('getHelp');
-Route::get('/get-helps',[getHelpController::class,'getOneHelp'])->name('getOneHelp');
+Route::put('/update-help/{id}', [getHelpController::class, 'update'])->name('updateHelp');
+Route::put('/help/{id}/approve', [getHelpController::class, 'approveHelp'])->name('help.approve');
+Route::put('/help/{id}/reject', [getHelpController::class, 'rejectHelp'])->name('help.reject');
+
+Route::get('/get-helps-approved',[getHelpController::class,'getOneHelp'])->name('getOneHelp');
+Route::get('/get-helps',[getHelpController::class,'allHelp'])->name('allHelp');
 Route::get('/user',[ProfileUserController::class,'authUser'])->name('user.index');
 
 Route::middleware('auth:sanctum')->post('/profile', [ProfileUserController::class, 'store'])->name('profileStore');

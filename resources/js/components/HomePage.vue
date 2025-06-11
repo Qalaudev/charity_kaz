@@ -38,7 +38,7 @@
     </section>
 
     <!-- КӨМЕК ҚАЖЕТ ЕТЕТІН ТОПТАР -->
-    <section class="py-20 px-4 md:px-8 bg-white relative">
+    <section class="py-20 px-4 md:px-8 bg-green-50 relative">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-4xl font-bold mb-14 text-center text-green-700 animate-fade-in-up">
                 {{ $t('groups_in_need') }}
@@ -80,7 +80,59 @@
                     <button @click="showModal = false" class="bg-green-600 text-white px-6 py-2 rounded-full shadow hover:bg-green-700 transition">
                         Жабу
                     </button>
-                    <button @click="charityDonation(true)" class="bg-blue-600 text-white px-6 py-2 rounded-full shadow hover:bg-green-700 transition">
+                    <button @click="charityDonation(true)" class="bg-blue-600 text-white px-6 py-2 mx-2 rounded-full shadow hover:bg-green-700 transition">
+                        Қайырымдылық жасау
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- КӨМЕК ҚАЖЕТ ЕТЕТІН ЖАНДАР -->
+    <section class="py-20 px-4 md:px-8 bg-white relative">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-14 text-center text-green-700 animate-fade-in-up">
+                {{ $t('people_in_need') }}
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div
+                    v-for="group in people"
+                    :key="group.id"
+                    @click="openModalPeople(group)"
+                    class="group-card bg-white/90 border border-green-200 shadow-xl hover:shadow-green-300 rounded-2xl cursor-pointer transform hover:-translate-y-2 hover:scale-105 transition-all duration-500 p-4 overflow-hidden group relative backdrop-blur-sm"
+                >
+                    <img :src="'/' + group.file" class="group-image rounded-xl h-48 w-full object-cover mb-4 transition-transform duration-500 group-hover:scale-105" alt="Group Image">
+                    <div class="p-2">
+                        <span class="text-green-500 text-sm font-semibold tracking-wide uppercase">{{ group.name }}</span>
+                        <h3 class="text-xl font-bold mt-2 text-gray-800">{{ group.surname }}</h3>
+                        <p class="text-gray-600 mt-2">{{ group.info }}</p>
+                    </div>
+                    <!-- Hover glow effect -->
+                    <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-10 bg-green-400 transition duration-300"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div v-if="showModalPeople" class="fixed inset-0 bg-black/30 backdrop-blur-md flex items-center justify-center z-50 animate-fade-in">
+            <div class="bg-white p-8 rounded-3xl shadow-2xl w-[90%] max-w-3xl max-h-[90vh] overflow-y-auto relative">
+                <img :src="'/' + selectedPeople.file" class="w-full h-64 object-cover rounded-xl mb-6" alt="Group">
+
+                <span class="text-green-600 text-sm font-semibold tracking-wider">{{ selectedPeople.name }}</span>
+                <h3 class="text-3xl font-bold mt-2 text-gray-800">{{ selectedPeople.surname }}</h3>
+                <p class="text-gray-700 mt-4 leading-relaxed">{{ selectedPeople.info }}</p>
+
+                <!-- QR код -->
+                <qrcode-vue :value="`https://yourwebsite.com/group/${selectedGroup.id}`" size="200" class="mx-auto my-6" />
+
+                <!-- Close button -->
+                <div class="text-right">
+                    <button @click="showModalPeople = false" class="bg-green-600 text-white px-6 py-2 rounded-full shadow hover:bg-green-700 transition">
+                        Жабу
+                    </button>
+                    <button @click="charityDonation(true)" class="bg-blue-600 text-white px-6 py-2 mx-2 rounded-full shadow hover:bg-green-700 transition">
                         Қайырымдылық жасау
                     </button>
                 </div>
@@ -382,12 +434,15 @@ export default {
     data() {
         return {
             groups:[],
+            people:[],
             isVisible: false,
             chatVisible: false,
             inputText: '',
             messages: [],
             showModal: false,
+            showModalPeople: false,
             selectedGroup: {},
+            selectedPeople: {},
             showModalOffer:false,
             loading:false,
             showModalReport:false,
@@ -396,6 +451,7 @@ export default {
     },
     created() {
         this.fetchGroups();
+        this.fetchPeople();
         window.addEventListener("scroll", this.handleScroll);
     },
     beforeUnmount() {
@@ -406,6 +462,15 @@ export default {
         try{
             const response = await axios.get('/group');
             this.groups = response.data;
+        }  catch (e)
+        {
+            console.error('Error fetching groups:', e);
+        }
+      },
+        async fetchPeople(){
+        try{
+            const response = await axios.get('/get-helps-approved');
+            this.people = response.data;
         }  catch (e)
         {
             console.error('Error fetching groups:', e);
@@ -430,6 +495,10 @@ export default {
         openModal(group) {
             this.selectedGroup = group;
             this.showModal = true;
+        },
+        openModalPeople(people) {
+            this.selectedPeople = people;
+            this.showModalPeople = true;
         },
         async sendMessage() {
             if (!this.inputText.trim()) return;

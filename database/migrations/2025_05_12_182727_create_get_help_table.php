@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('file')->nullable();
             $table->text('info');
+            $table->boolean('is_approved')->nullable(); // или 'status', зависит от твоей логики
             $table->timestamps();
         });
     }

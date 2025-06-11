@@ -1,7 +1,7 @@
 {
     "menu": "Menu",
     "get_help": "Get Help",
-    "contact_us": "Contact Us",
+    "contact_uss": "Contact Us",
 
     "help": "Help",
     "profile": "My profile",
@@ -20,6 +20,8 @@
     "children_future": "A child is the future, and their happy future is in our hands today. We are ready to give hope to children in need with every caring soul.",
 
     "groups_in_need": "Groups in need of assistance",
+
+    "people_in_need": "People in need of assistance",
 
     "quote": "If there are no people who care for the children, how can a child who calls others 'my people' emerge?",
     "quote1": "One heart brings change, but hundreds of hearts create a miracle",

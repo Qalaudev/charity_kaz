@@ -14,9 +14,9 @@
                         QOLDAU
                     </a>
                     <ul class="flex gap-6 text-sm font-semibold text-emerald-700">
-                        <li><a href="/" class="hover:text-emerald-500 transition">{{ $t('menu') }}</a></li>
-                        <li><a href="/help" class="hover:text-emerald-500 transition">{{ $t('get_help') }}</a></li>
-                        <li><a href="/contact-us" class="hover:text-emerald-500 transition">{{ $t('contact_us') }}</a></li>
+                        <li><a href="/" class="hover:text-emerald-500 transition">{{$t('menu')}}</a></li>
+                        <li><a href="/help" class="hover:text-emerald-500 transition">{{$t('get_help')}}</a></li>
+                        <li><a href="/contact-us" class="hover:text-emerald-500 transition">{{$t('contact_uss')}}</a></li>
                     </ul>
                 </div>
 

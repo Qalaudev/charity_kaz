@@ -75,6 +75,7 @@
                                 {{ $t('read_more') }}
                             </button>
                             <button
+                                v-if="isAdmin || isPsychology"
                                 @click="deleteNews(newsItem.id)"
                                 class="border border-red-500 text-red-500 hover:bg-red-500 hover:text-white p-2 rounded-full transition duration-200"
                                 title="Delete"

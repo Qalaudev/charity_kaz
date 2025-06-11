@@ -9,5 +9,5 @@ class GetHelp extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'surname', 'number', 'email', 'file', 'info'];
+    protected $fillable = ['name', 'surname', 'number', 'email', 'file', 'info', 'is_approved'];
 }

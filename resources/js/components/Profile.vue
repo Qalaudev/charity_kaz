@@ -101,6 +101,17 @@
                             {{ $t('group-that-needs-help') }}
                         </button>
                     </li>
+
+                    <li v-if = "isAdmin">
+                        <button
+                            @click="people"
+                            :class="showSection === 'people' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
+                            class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
+                        >
+                            Көмек керек жандар
+                        </button>
+                    </li>
+
                     <li v-if="isUser || isPsychology" >
                         <button
                             @click="chats"
@@ -669,7 +680,7 @@
                 <section
                     v-if="isAdmin"
                     v-show="showSection === 'siteMessage'"
-                    class="transition-opacity duration-500 ease-in-out"
+                    class="mt-6 transition-opacity duration-500 overflow-x-auto"
                     :class="{ 'opacity-100': showSection === 'siteMessage', 'opacity-0 absolute': showSection !== 'siteMessage' }"
                 >
                     <site-message class="animate-fadeInScale" />
@@ -720,12 +731,105 @@
                             <td class="py-3 px-5 text-green-700">{{ help.description }}</td>
                             <td class="py-3 px-5">
                                 <a
+                                    v-if="help.image"
                                     :href="`/${help.image}`"
                                     target="_blank"
                                     class="text-green-600 hover:text-green-800 underline font-semibold transition"
                                 >
-                                    {{ help.image.split('/').pop() }}
+                                    {{ help.image?.split('/').pop() }}
                                 </a>
+                                <span v-else class="text-gray-500 italic">No image</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <p v-else class="text-green-500 italic mt-12 text-center select-none animate-fadeIn">
+                        Тізім бос
+                    </p>
+                </section>
+
+                <!-- Helps People Section -->
+                <section
+                    v-if="isAdmin"
+                    v-show="showSection === 'people'"
+                    class="mt-6 transition-opacity duration-500 overflow-x-auto"
+                    :class="{ 'opacity-100': showSection === 'people', 'opacity-0 absolute': showSection !== 'people' }"
+                >
+                    <h2 class="text-3xl font-extrabold mb-6 text-green-700 tracking-wider animate-slideDown">
+                        Көмек керек жандар
+                    </h2>
+
+                    <!-- Helps Section Table -->
+                    <table
+                        v-if="peopleHelps.length"
+                        border="1"
+                        class="small-text"
+                    >
+                        <thead>
+                        <tr>
+                            <th>Действие</th>
+                            <th>Имя</th>
+                            <th>Фамилия</th>
+                            <th>Номер телефона</th>
+                            <th>Почта</th>
+                            <th>О себе</th>
+                            <th>Документы, файлы, изображение</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr
+                            v-for="help in peopleHelps"
+                            :key="help.id"
+                            :class="{
+    'bg-blue-100': help.is_approved == true,
+    'bg-red-100': help.is_approved == false,
+    'bg-gray-100': help.is_approved == null
+  }"
+                        >
+                            <td class="py-3 px-5 flex gap-2">
+                                <!-- Редактировать -->
+                                <button
+                                    @click="approveHelp(help.id)"
+                                    class="text-blue-600 hover:text-blue-800 transition"
+                                    title="Өзгерту"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                         viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M11 4h10M11 4a2 2 0 00-2 2v14l4-4h5a2 2 0 002-2V6a2 2 0 00-2-2H11z"/>
+                                    </svg>
+                                </button>
+
+                                <!-- Удалить -->
+                                <button
+                                    @click="rejectHelp(help.id)"
+                                    class="text-red-600 hover:text-red-800 transition"
+                                    title="Жою"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                         viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M6 18L18 6M6 6l12 12"/>
+                                    </svg>
+                                </button>
+                            </td>
+
+                            <td class="py-3 px-5 text-green-900 font-medium">{{ help.name }}</td>
+                            <td class="py-3 px-5 text-green-800">{{ help.surname }}</td>
+                            <td class="py-3 px-5 text-green-700">{{ help.number }}</td>
+                            <td class="py-3 px-5 text-green-700">{{ help.email }}</td>
+                            <td class="py-3 px-5 text-green-700">{{ help.info }}</td>
+                            <td class="py-3 px-5">
+                                <a
+                                    v-if="help.file"
+                                    :href="`/${help.file}`"
+                                    target="_blank"
+                                    class="text-green-600 hover:text-green-800 underline font-semibold transition"
+                                >
+                                    {{ help.file?.split('/').pop() }}
+                                </a>
+                                <span v-else class="text-gray-500 italic">No image</span>
                             </td>
                         </tr>
                         </tbody>
@@ -766,6 +870,7 @@ export default {
             },
             successMessage: '',
             helps: [],
+            peopleHelps: [],
             userRoles: [],
             user: {},
             totalDonated: 0,
@@ -899,12 +1004,34 @@ export default {
             this.form = response.data.user;
             this.calculateTotalDonated();
             this.loadAchievements();
+            await this.people();
         } catch (er) {
             console.log("Қолданушының данныйын алу кезінде қателік туды.", er);
         }
     },
 
     methods: {
+        approveHelp(id) {
+            axios.put(`/help/${id}/approve`)
+                .then(response => {
+                    this.people();
+                    console.log('Approved:', response.data);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
+
+        rejectHelp(id) {
+            axios.put(`/help/${id}/reject`)
+                .then(response => {
+                    this.people();
+                    console.log('Rejected:', response.data);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
         async submitProfile() {
             try {
                 const formData = new FormData();
@@ -989,6 +1116,16 @@ export default {
             try {
                 const response = await axios.get('/group');
                 this.helps = response.data;
+            } catch (error) {
+                console.error("Деректерді алу кезінде қате:", error);
+            }
+        },
+
+        async people() {
+            this.showSection = 'people';
+            try {
+                const response = await axios.get('/get-helps');
+                this.peopleHelps = response.data;
             } catch (error) {
                 console.error("Деректерді алу кезінде қате:", error);
             }
@@ -1316,5 +1453,9 @@ export default {
 }
 .animate-fadeInScale {
     animation: fadeInScale 0.6s ease forwards;
+}
+
+.small-text {
+    font-size: 14px;
 }
 </style>
