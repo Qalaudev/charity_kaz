@@ -2,7 +2,7 @@
     <div class="volunteer-service min-h-screen bg-gradient-to-br from-green-50 via-green-100 to-teal-100 selection:bg-green-300 selection:text-white">
 
         <!-- Navbar placeholder -->
-        <navbar />
+        <Navbar></Navbar>
 
         <!-- Header Section -->
         <div class="bg-white shadow-md rounded-b-3xl">
@@ -223,7 +223,7 @@
 <script>
 
 
-import Navbar from './Navbar.vue';
+import Navbar from '../Navbar.vue'
 
 export default {
     name: 'VolunteerService',

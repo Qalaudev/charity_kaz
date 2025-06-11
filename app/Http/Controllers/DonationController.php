@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Payment;
 use App\Models\PaymentDonation;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,11 @@ class DonationController extends Controller
 
     public function myDonations()
     {
-        return PaymentDonation::where('user_id', auth()->id())->latest()->get();
+//        return PaymentDonation::where('user_id', auth()->id())->latest()->get();
+        $payments = Payment::orderBy('created_at', 'desc')->get();
+        return response()->json($payments);
+        dd($payments);
+
     }
 
     public function allDonations()

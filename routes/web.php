@@ -9,6 +9,7 @@ use App\Http\Controllers\DonationController;
 use App\Http\Controllers\getHelpController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\ProfileUserController;
 use App\Mail\VerificationCodeMail;
 use App\Models\Message;
@@ -106,6 +107,14 @@ Route::get('/test-event', function () {
 Route::get('/news', function () {
     return view('news.index');
 })->name('news.index');
+
+Route::post('paypal',[PaypalController::class,'paypal'])->name('paypal');
+Route::get('success',[PaypalController::class,'success'])->name('success');
+Route::get('cancel',[PaypalController::class,'cancel'])->name('cancel');
+Route::get('/payment-success', function () {
+    return view('welcome');
+})->name('payment-success');
+
 
 
 Route::get('/{any}', function () {

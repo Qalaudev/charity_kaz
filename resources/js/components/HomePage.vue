@@ -141,33 +141,33 @@
     <news-section></news-section>
 
 
-    <div id="chat-widget" class="fixed bottom-4 right-4 z-50">
-        <button @click="toggleChat" class="bg-gradient-to-r from-indigo-500 to-blue-600 text-white p-3 rounded-full shadow-2xl hover:scale-110 transition transform duration-300">
-            🤖
-        </button>
-    </div>
+<!--    <div id="chat-widget" class="fixed bottom-4 right-4 z-50">-->
+<!--        <button @click="toggleChat" class="bg-gradient-to-r from-indigo-500 to-blue-600 text-white p-3 rounded-full shadow-2xl hover:scale-110 transition transform duration-300">-->
+<!--            🤖-->
+<!--        </button>-->
+<!--    </div>-->
 
-    <div v-show="chatVisible" id="chat-window" class="fixed bottom-24 right-4 w-80 max-w-sm h-[480px] bg-white shadow-2xl rounded-2xl flex flex-col z-50 border border-gray-200 overflow-hidden animate__animated animate__fadeInUp">
-        <div class="relative bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center py-3 px-4 font-semibold text-lg">
-            {{ $t('ai_chat') }}
-            <button @click="toggleChat" class="absolute right-3 top-3 text-white hover:text-gray-300 text-sm">✖</button>
-        </div>
+<!--    <div v-show="chatVisible" id="chat-window" class="fixed bottom-24 right-4 w-80 max-w-sm h-[480px] bg-white shadow-2xl rounded-2xl flex flex-col z-50 border border-gray-200 overflow-hidden animate__animated animate__fadeInUp">-->
+<!--        <div class="relative bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center py-3 px-4 font-semibold text-lg">-->
+<!--            {{ $t('ai_chat') }}-->
+<!--            <button @click="toggleChat" class="absolute right-3 top-3 text-white hover:text-gray-300 text-sm">✖</button>-->
+<!--        </div>-->
 
-        <div ref="messages" class="flex-1 px-4 py-3 overflow-y-auto text-sm space-y-3 bg-gray-50">
-            <div v-for="(message, index) in messages" :key="index" :class="message.sender === 'user' ? 'text-right' : 'text-left'">
-                <span :class="message.sender === 'user' ? 'inline-block bg-gray-200 px-3 py-2 rounded' : 'inline-block bg-blue-100 px-3 py-2 rounded'">
-                    {{ message.text }}
-                </span>
-            </div>
-        </div>
+<!--        <div ref="messages" class="flex-1 px-4 py-3 overflow-y-auto text-sm space-y-3 bg-gray-50">-->
+<!--            <div v-for="(message, index) in messages" :key="index" :class="message.sender === 'user' ? 'text-right' : 'text-left'">-->
+<!--                <span :class="message.sender === 'user' ? 'inline-block bg-gray-200 px-3 py-2 rounded' : 'inline-block bg-blue-100 px-3 py-2 rounded'">-->
+<!--                    {{ message.text }}-->
+<!--                </span>-->
+<!--            </div>-->
+<!--        </div>-->
 
-        <div class="p-3 bg-white border-t border-gray-200 flex items-center space-x-2">
-            <input v-model="inputText" placeholder="Хабарлама жаз..." class="flex-1 text-sm px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400" @keydown.enter="sendMessage" />
-            <button @click="sendMessage" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm rounded-full transition">
-                {{ $t('send') }}
-            </button>
-        </div>
-    </div>
+<!--        <div class="p-3 bg-white border-t border-gray-200 flex items-center space-x-2">-->
+<!--            <input v-model="inputText" placeholder="Хабарлама жаз..." class="flex-1 text-sm px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400" @keydown.enter="sendMessage" />-->
+<!--            <button @click="sendMessage" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm rounded-full transition">-->
+<!--                {{ $t('send') }}-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    </div>-->
 
     <f-a-q/>
 
@@ -275,10 +275,10 @@ import GroupDetails from "@/components/GroupDetails.vue";
 import QRCodeVue from 'qrcode.vue';
 
 
-const toggleChat = () => {
-    const chatWindow = document.getElementById('chat-window');
-    chatWindow.classList.toggle('hidden');
-};
+// const toggleChat = () => {
+//     const chatWindow = document.getElementById('chat-window');
+//     chatWindow.classList.toggle('hidden');
+// };
 const sendMessage = () => {
     const input = document.getElementById('chat-input');
     const message = input.value.trim();

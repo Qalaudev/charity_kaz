@@ -20,6 +20,7 @@ import AboutUs from '../components/design/AboutUs.vue';
 import FAQ from '../components/design/FAQ.vue';
 import CharityPayment from "../components/CharityPayment.vue";
 import CharityPaymentForm from "../components/CharityPaymentForm.vue";
+import PaymentSuccess from "../components/PaymentSuccess.vue";
 
 const routes = [
     {
@@ -107,7 +108,13 @@ const routes = [
     {
         path: '/making-donation-form',
         component: CharityPaymentForm
+    },
+    {
+        path: '/payment-success',
+        component: PaymentSuccess
     }
+
+
 ];
 
 const router = createRouter({

@@ -145,7 +145,9 @@
     "help_create_group" : "Create a help group",
     "message_chat": "Message chat",
     "personal_profile_info": "Your personal profile information",
-    "your_contribution": "Your contribution:"
+    "your_contribution": "Your contribution:",
+    "support_us": "Let's support",
+    "other_method": "Other method"
 
 
 
