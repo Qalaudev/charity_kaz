@@ -110,6 +110,9 @@ Route::get('/news', function () {
 Route::post('paypal',[PaypalController::class,'paypal'])->name('paypal');
 Route::get('success',[PaypalController::class,'success'])->name('success');
 Route::get('cancel',[PaypalController::class,'cancel'])->name('cancel');
+Route::get('/payment-success', function () {
+    return view('welcome');
+})->name('payment-success');
 
 
 

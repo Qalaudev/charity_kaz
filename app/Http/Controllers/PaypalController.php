@@ -59,7 +59,7 @@ class PaypalController extends Controller
             $payment->payment_method = "Paypal";
             $payment->save();
 
-            return "Payment successful";
+            return redirect()->route('payment-success');
 
             unset($_SESSION['amount']);
         }else {

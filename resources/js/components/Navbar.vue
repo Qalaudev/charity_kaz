@@ -10,9 +10,8 @@
             <div class="container mx-auto flex justify-between items-center px-4">
                 <!-- Лого және мәзір -->
                 <div class="flex items-center gap-6">
-                    <a href="/" class="transition-transform duration-500 hover:scale-110">
-                        <img src="/storage/app/public/navbarImage/logo.png" alt="QOLDAU"
-                             class="h-12 w-12 rounded-full shadow-lg ring-2 ring-emerald-300 transition hover:ring-emerald-500" />
+                    <a href="/" class="text-3xl font-extrabold tracking-wide text-emerald-700 hover:text-emerald-500 transition-transform duration-500 hover:scale-110 drop-shadow-md uppercase">
+                        QOLDAU
                     </a>
                     <ul class="flex gap-6 text-sm font-semibold text-emerald-700">
                         <li><a href="/" class="hover:text-emerald-500 transition">{{ $t('menu') }}</a></li>
