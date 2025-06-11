@@ -62,6 +62,7 @@ Route::post('/contact', [ContactController::class, 'sendMail'])->name('sendMail'
 Route::post('/send-code', [RegisterController::class, 'sendVerificationCode']);
 Route::post('/verify-code', [RegisterController::class, 'verifyCode']);
 
+Route::get('/site-message',[ContactController::class,'index'])->name('siteMessage.index');
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/users-all', [ChatController::class, 'getAllUsers']);

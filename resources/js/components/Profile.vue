@@ -119,6 +119,17 @@
                             Қолданушылар
                         </button>
                     </li>
+
+                    <li v-if = "isAdmin">
+                        <button
+                            @click="siteMessage"
+                            :class="showSection === 'siteMessage' ? 'text-green-600 font-bold underline decoration-green-400 underline-offset-4' : 'hover:text-green-500'"
+                            class="w-full text-left transition-all duration-300 ease-in-out hover:scale-105"
+                        >
+                            Сайт хабарламалары
+                        </button>
+                    </li>
+
                     <li v-if = "isAdmin">
                         <button
                             @click="roles"
@@ -654,6 +665,16 @@
                     <users class="animate-fadeInScale" />
                 </section>
 
+                <!-- Site Message-->
+                <section
+                    v-if="isAdmin"
+                    v-show="showSection === 'siteMessage'"
+                    class="transition-opacity duration-500 ease-in-out"
+                    :class="{ 'opacity-100': showSection === 'siteMessage', 'opacity-0 absolute': showSection !== 'siteMessage' }"
+                >
+                    <site-message class="animate-fadeInScale" />
+                </section>
+
                <!-- Roles-->
                 <section
                     v-if="isAdmin"
@@ -725,10 +746,11 @@ import Navbar from '../components/Navbar.vue';
 import CharityGroup from './CharityGroup.vue';
 import Chat from './design/Chat.vue';
 import Users from './design/Users.vue';
+import SiteMessage from './design/SiteMessage.vue';
 import Roles from './design/Roles.vue';
 export default {
     components: {
-        CharityGroup,Navbar,Chat,Users,Roles
+        CharityGroup,Navbar,Chat,Users,Roles,SiteMessage
     },
     data() {
         return {
@@ -984,12 +1006,9 @@ export default {
         },
         async users() {
             this.showSection = 'users';
-            try {
-                // const response = await axios.get('/chats');
-                // this.helps = response.data;
-            } catch (error) {
-                console.error("Деректерді алу кезінде қате:", error);
-            }
+        },
+        async siteMessage() {
+            this.showSection = 'siteMessage';
         },
         async roles() {
             this.showSection = 'roles';

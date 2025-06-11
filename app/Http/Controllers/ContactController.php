@@ -44,4 +44,12 @@ class ContactController extends Controller
             'contact' => $contact
         ], 201);
     }
+
+
+    public function index()
+    {
+        $contacts = Contact::all();
+
+        return response()->json($contacts);
+    }
 }
