@@ -26,11 +26,13 @@
 
             <!-- Оң жақ: Actions -->
             <div class="flex items-center space-x-4">
-                <button
+                <router-link
+                    to="/contact-us"
                     class="bg-green-400 text-white px-5 py-2 rounded-full shadow-md hover:bg-green-500 transition-all duration-300 hover:scale-105 whitespace-nowrap animate-bounce-slow"
                 >
                     Байланыс
-                </button>
+                </router-link>
+
                 <!-- Тілдер -->
                 <div class="flex items-center gap-2">
                     <button>
