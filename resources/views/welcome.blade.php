@@ -16,7 +16,7 @@
 </head>
 <body>
 <div id="app"></div>
-
+<script src="https://www.google.com/recaptcha/api.js?render=6Lfxm00rAAAAAHK2Qegt6PPfC1Stu4D42Pg1QvSR"></script>
 <script type="module" src="{{ Vite::asset('resources/js/app.js') }}"></script>
 </body>
 </html>

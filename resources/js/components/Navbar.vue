@@ -299,7 +299,7 @@ export default {
                 this.loading = false;
             }
         },
-        async submitRegistration(){
+        async submitRegistration() {
             this.loading = true;
             try {
                 const response = await axios.post('/register', {
@@ -307,38 +307,41 @@ export default {
                     password: this.password
                 });
 
-                if (response.data.success)
-                {
-                    alert(response.data.message);
+                if (response.data.success) {
+                    alert(response.data.message || 'Тіркеу сәтті өтті!');
                     window.location.href = '/';
                 }
             } catch (e) {
-                alert(e.response?.data?.message || 'Ошибка при регистрации');
+                alert(e.response?.data?.message || 'Тіркелу кезінде қате орын алды');
             } finally {
                 this.loading = false;
             }
         },
-        async submitLogin(){
-            try{
-                const response = await axios.post('/login',{
-                    email:this.email,
-                    password: this.password
+
+        async submitLogin() {
+            try {
+                const captchaToken = await grecaptcha.execute('6Lfxm00rAAAAAHK2Qegt6PPfC1Stu4D42Pg1QvSR', { action: 'login' });
+
+                const response = await axios.post('/login', {
+                    email: this.email,
+                    password: this.password,
+                    token: captchaToken
                 });
 
-
                 const token = response.data.token;
-                this.isLoggedIn = true
-                // ✅ Сақтау
+
                 localStorage.setItem('token', token);
-                localStorage.setItem('isLoggedIn', 'true')
-                this.closeModal()
-                alert(response.data.message || "Сәтті кірдіңіз");
+                localStorage.setItem('isLoggedIn', 'true');
+
+                this.isLoggedIn = true;
+                this.closeModal();
                 this.showModal = '';
-            }catch (e){
+                alert(response.data.message || 'Сәтті кірдіңіз');
+            } catch (e) {
                 if (e.response?.data?.message) {
-                    alert(e.response.data.error || 'Ошибка при логин');
+                    alert(e.response.data.message || 'Кіру кезінде қате');
                 } else {
-                    alert('Қате! Кейінірек байқап көріңіз')
+                    alert('Қате! Кейінірек байқап көріңіз');
                 }
             }
         },
