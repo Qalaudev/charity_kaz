@@ -38,11 +38,21 @@
                     </div>
                 </div>
             </div>
+            <div class="w-full h-96 rounded-lg overflow-hidden mt-10">
+            <iframe
+                    src="https://yandex.ru/map-widget/v1/?um=constructor%3A81e070702fd51ef9e3bf4c2e135894ff42191d8f502ed1a20eebf2488105660f&amp;source=constructor"
+                    width="100%"
+                    height="100%"
+                    frameborder="0"
+                    allowfullscreen
+                ></iframe>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+
 export default {
     name: 'FAQComponent',
     data() {
@@ -99,4 +109,13 @@ export default {
 .bg-mint-100 {
     background-color: #e0f0ea;
 }
+
+.map-frame {
+    width: 100%;
+    height: 384px; /* Немесе сурет биіктігіне теңдей */
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
 </style>
