@@ -1,5 +1,5 @@
 <template>
-    <Navbar></Navbar>
+    <navbar/>
     <!-- Container -->
     <div class="bg-gray-100 py-10 min-h-screen flex justify-center items-start px-4 sm:px-6">
         <div class="w-full max-w-5xl bg-white rounded-xl shadow-lg flex flex-col md:flex-row overflow-hidden">
@@ -867,7 +867,7 @@
 
 <script>
 import axios from "axios";
-import Navbar from '../components/Navbar.vue';
+import Navbar from './design/Navbar.vue';
 import CharityGroup from './CharityGroup.vue';
 import Chat from './design/Chat.vue';
 import Users from './design/Users.vue';
